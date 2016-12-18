@@ -19,6 +19,6 @@ persistLauncher in Test := false
 
 jsDependencies ++= Seq() // Web Jars
 
-libraryDependencies ++= Seq("org.scala-js" %%% "scalajs-dom" % "0.9.0") // JS Only
+libraryDependencies ++= Seq("org.scala-js" %%% "scalajs-dom" % "0.9.1") // JS Only
 
 

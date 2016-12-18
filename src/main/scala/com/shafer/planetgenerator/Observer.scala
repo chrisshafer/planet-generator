@@ -15,7 +15,11 @@ object Observer extends JSApp {
     document.getElementById("container").appendChild(canvas)
     val (width, height, rctx) = initCanvas(canvas)
 
-    val planet = Planet(width/2, height/2, 200, PlanetBase())
+    val planet = Planet(x = width/2,
+                        y = height/2,
+                        radius = 200,
+                        planetBase = PlanetBase(),
+                        atmosphere = Atmosphere())
 
     planet.render(rctx)
   }
