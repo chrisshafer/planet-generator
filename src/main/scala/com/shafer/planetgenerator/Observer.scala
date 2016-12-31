@@ -5,6 +5,7 @@ import org.scalajs.dom
 import org.scalajs.dom._
 import org.scalajs.dom.html.Canvas
 
+import scala.scalajs.js
 import scala.scalajs.js.JSApp
 
 object Observer extends JSApp {
@@ -18,9 +19,11 @@ object Observer extends JSApp {
     val planet = Planet(x = width/2,
                         y = height/2,
                         radius = 200,
-                        planetBase = PlanetBase(),
+                        planetBase = PlanetBase(roughness = 200),
                         atmosphere = Atmosphere())
-
+    canvas.onclick = { event: MouseEvent =>
+      planet.render(rctx)
+    }
     planet.render(rctx)
   }
 
@@ -30,7 +33,7 @@ object Observer extends JSApp {
 
     canvas.width  = dom.document.getElementById("container").clientWidth
     canvas.height = dom.document.getElementById("container").clientHeight
-
-    (width, height, canvas.getContext("2d").asInstanceOf[dom.CanvasRenderingContext2D])
+    val context = canvas.getContext("2d").asInstanceOf[dom.CanvasRenderingContext2D]
+    (width, height, context)
   }
 }
