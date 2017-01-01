@@ -16,16 +16,24 @@ case class Color(r: Int, g: Int, b: Int, a: Double){
 }
 
 object Color{
-  def random(a: Int = 255) = {
+
+  def random: Color = random(255)
+
+  def random(a: Int): Color = {
     val r: Int = (Math.random() * 255).toInt
     val g: Int = (Math.random() * 255).toInt
     val b: Int = (Math.random() * 255).toInt
     Color(r,g,b,a)
   }
 
+  def randomGreyscale: Color = {
+    val scale = (Math.random() * 255).toInt
+    Color(scale,scale,scale,1)
+  }
 
-  def transparent = Color(0,0,0,0)
-  def white = Color(0,0,0,1)
+  def transparent = Color(0, 0, 0, 0)
+  def white = Color(255, 255, 255, 1)
+  def black = Color(0, 0, 0, 1)
   def apply(r: Int, g: Int, b: Int): Color = Color(r, g, b, 255)
 }
 
@@ -47,3 +55,12 @@ object Experimental{
   }
 }
 
+object Util{
+
+  def random[A](seq: Seq[A]): Option[A] = {
+    if(seq.nonEmpty){
+      val idx = (Math.random() * seq.length).toInt
+      Some(seq(idx))
+    } else None
+  }
+}

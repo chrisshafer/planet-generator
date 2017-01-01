@@ -10,6 +10,8 @@ case class Planet(x: Double,
                   planetBase: PlanetBase,
                   atmosphere: Atmosphere) {
 
+
+
   def render(ctx: CanvasRenderingContext2D) = {
     val time = Date.now()
     ctx.save()
@@ -26,5 +28,11 @@ case class Planet(x: Double,
     ctx.stroke()
     ctx.restore()
     println(s"${Date.now() - time}ms")
+  }
+}
+
+object Planet{
+  def apply(planetBase: PlanetBase, atmosphere: Atmosphere)(x: Double, y: Double, radius: Double): Planet = {
+    Planet(x, y, radius, planetBase, atmosphere)
   }
 }

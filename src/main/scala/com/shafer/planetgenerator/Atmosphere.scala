@@ -7,31 +7,13 @@ import org.scalajs.dom.CanvasRenderingContext2D
 case class Atmosphere(clouds: Int = Atmosphere.defaultClouds) extends RenderedFeature{
 
   def drawClouds(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D) = {
-    val maxWidth  = 120
-    val maxHeight = 20
-    val minWidth  = 50
-    val minHeight = 7
-
-    canvas.fillStyle = Color(255,255,255,0.9).build
-    for{
-      cloud   <- 0 to clouds by 1
-      x      = Math.random() * planetR * 2 + planetX - planetR
-      y      = Math.random() * planetR * 2 + planetY - planetR
-      width  = Math.random() * (maxWidth  - minWidth) + minWidth
-      height = Math.random() * (maxHeight - minHeight) + minHeight
-    } yield {
-      Experimental.drawEllipse(x, y, width, height)(canvas)
-    }
-  }
-
-  def drawVectorClouds(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D) = {
     val maxWidth  = 150
     val maxHeight = 30
     val minWidth  = 100
     val minHeight = 20
     val numberOfVectors = 30
 
-    val color = Color(255,255,255,0.9)
+    val color = Color(255,255,255,1)
 
     (0 to clouds).foreach { cloud =>
       val width = Math.random() * (maxWidth - minWidth) + minWidth
@@ -66,11 +48,11 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds) extends RenderedFe
   }
 
   override def render(planet: Planet)(canvas: CanvasRenderingContext2D): Unit = {
-    drawVectorClouds(planet.x, planet.y, planet.radius, canvas)
+    drawClouds(planet.x, planet.y, planet.radius, canvas)
   }
 }
 
 object Atmosphere{
-  val defaultClouds = (Math.random() * 15).toInt
-
+  private val defaultClouds = (Math.random() * 15).toInt
+  def none = Atmosphere(-1)
 }
