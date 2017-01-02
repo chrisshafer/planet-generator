@@ -4,7 +4,7 @@ import com.shafer.planetgenerator.delaunay.{Point, Delaunay}
 import org.scalajs.dom.CanvasRenderingContext2D
 
 
-case class Atmosphere(clouds: Int = Atmosphere.defaultClouds) extends RenderedFeature{
+case class Atmosphere(clouds: Int = Atmosphere.defaultClouds, cloudColor: () => Color = Atmosphere.defaultColor) extends RenderedFeature{
 
   def drawClouds(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D) = {
     val maxWidth  = 150
@@ -12,8 +12,6 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds) extends RenderedFe
     val minWidth  = 100
     val minHeight = 20
     val numberOfVectors = 30
-
-    val color = Color(255,255,255,1)
 
     (0 to clouds).foreach { cloud =>
       val width = Math.random() * (maxWidth - minWidth) + minWidth
@@ -29,10 +27,9 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds) extends RenderedFe
       } yield {
         Point(x, y)
       }
-
       val triangles = Delaunay.triangulate(points.toList)
       triangles.foreach { triangle =>
-        val tricolor = color.darken(Math.random() * .15).build
+        val tricolor = cloudColor().darken(Math.random() * .15).build
         canvas.strokeStyle = tricolor
         canvas.fillStyle = tricolor
         canvas.beginPath()
@@ -53,6 +50,7 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds) extends RenderedFe
 }
 
 object Atmosphere{
+  private val defaultColor = () => Color(255,255,255,1)
   private val defaultClouds = (Math.random() * 15).toInt
   def none = Atmosphere(-1)
 }

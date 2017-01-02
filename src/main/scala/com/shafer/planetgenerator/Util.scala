@@ -13,21 +13,33 @@ case class Color(r: Int, g: Int, b: Int, a: Double){
       b = (b - b * percent).toInt
     )
   }
+
+  def inverted: Color = {
+    this.copy(
+     r = (r * -1) + 255,
+     g = (g * -1) + 255,
+     b = (b * -1) + 255
+    )
+  }
 }
 
 object Color{
 
-  def random: Color = random(255)
+  def random: Color = random(256)
 
   def random(a: Int): Color = {
-    val r: Int = (Math.random() * 255).toInt
-    val g: Int = (Math.random() * 255).toInt
-    val b: Int = (Math.random() * 255).toInt
+    val r: Int = (Math.random() * 256).toInt
+    val g: Int = (Math.random() * 256).toInt
+    val b: Int = (Math.random() * 256).toInt
     Color(r,g,b,a)
   }
 
-  def randomGreyscale: Color = {
-    val scale = (Math.random() * 255).toInt
+  def randomGreyscale(min: Int = 0, max: Int = 256): Color = {
+    val scale = ((Math.random() * (max - min)) + min).toInt match {
+      case tooHot if tooHot > 255 => 255
+      case tooCold if tooCold < 0 => 0
+      case justRight => justRight
+    }
     Color(scale,scale,scale,1)
   }
 
@@ -59,7 +71,7 @@ object Util{
 
   def random[A](seq: Seq[A]): Option[A] = {
     if(seq.nonEmpty){
-      val idx = (Math.random() * seq.length).toInt
+      val idx = (Math.random() * seq.length + 1).toInt - 1
       Some(seq(idx))
     } else None
   }

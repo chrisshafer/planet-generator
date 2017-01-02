@@ -94,18 +94,20 @@ object Delaunay {
   }
   
   def triangulate(seedPoints : List[Point]) : Seq[(Point, Point, Point)] = {
-    val numPoints = seedPoints.length
-    val pointList = seedPoints ::: boundingTriangle(seedPoints)
-    val initialTriangle = List(Triangle(numPoints + 0, numPoints + 1, numPoints + 2))
-    val pointsSorted = pointList.take(numPoints).zipWithIndex.sortBy(_._1.x).map{ case (Point(x,y), i) => i }.distinct
+    if(seedPoints.nonEmpty) {
+      val numPoints = seedPoints.length
+      val pointList = seedPoints ::: boundingTriangle(seedPoints)
+      val initialTriangle = List(Triangle(numPoints + 0, numPoints + 1, numPoints + 2))
+      val pointsSorted = pointList.take(numPoints).zipWithIndex.sortBy(_._1.x).map { case (Point(x, y), i) => i}.distinct
 
-    val (finallyCompleted, triangles) = pointsSorted.foldLeft((List.empty[Triangle], initialTriangle)){
+      val (finallyCompleted, triangles) = pointsSorted.foldLeft((List.empty[Triangle], initialTriangle)) {
         case ((completedTriangles, currentTriangle), pointIdx) =>
-            addPointToMesh(completedTriangles, currentTriangle, pointIdx)(pointList)
-    }
+          addPointToMesh(completedTriangles, currentTriangle, pointIdx)(pointList)
+      }
 
-    (finallyCompleted ::: triangles).filterNot( t => t.p1 >= numPoints || t.p2 >= numPoints || t.p3 >= numPoints )
-                .map{ t => (seedPoints(t.p1), seedPoints(t.p2), seedPoints(t.p3)) }
+      (finallyCompleted ::: triangles).filterNot(t => t.p1 >= numPoints || t.p2 >= numPoints || t.p3 >= numPoints)
+        .map { t => (seedPoints(t.p1), seedPoints(t.p2), seedPoints(t.p3))}
+    } else Nil
   }
 
 }
