@@ -1,6 +1,6 @@
 package com.shafer.planetgenerator
 
-object NameGenerator extends App {
+object NameGenerator{
 
   val starSystems = Seq(
     "Eridanus",
@@ -59,6 +59,4 @@ object NameGenerator extends App {
   def generate: String = {
     s"${Util.random(starSystems).get} ${Util.random(postfix).get}"
   }
-
-  println(generate)
 }

@@ -8,31 +8,46 @@ case class Planet(x: Double,
                   y: Double,
                   radius: Double,
                   planetBase: PlanetBase,
-                  atmosphere: Atmosphere) {
+                  atmosphere: Atmosphere,
+                  name: String) {
 
-
-
+  val namePadding = 20
+  val backgroundColor = Color(27, 27, 27)
   def render(ctx: CanvasRenderingContext2D) = {
     val time = Date.now()
     ctx.save()
     planetBase.render(this)(ctx)
     atmosphere.render(this)(ctx)
     ctx.restore()
+    renderAliasOverlayFix(ctx)
+    renderName(ctx)
+    println(s"${Date.now() - time}ms")
+  }
 
-    // inner-space aliasing
+  def renderAliasOverlayFix(ctx: CanvasRenderingContext2D) = {
     ctx.save()
     ctx.beginPath()
     ctx.arc(x, y, radius -2, 0, 2 * Math.PI, false)
-    ctx.strokeStyle = Color(27, 27, 27).build
+    ctx.strokeStyle = backgroundColor.build
     ctx.lineWidth = 5
     ctx.stroke()
     ctx.restore()
-    println(s"${Date.now() - time}ms")
+  }
+
+  def renderName(ctx: CanvasRenderingContext2D) = {
+    ctx.save()
+    ctx.font = "30pt Calibri"
+    ctx.textAlign = "center"
+    ctx.fillStyle = backgroundColor.lighten(2.00).build
+    ctx.fillText(name, x, y + radius + namePadding + 15 + 5)
+    ctx.restore()
   }
 }
 
 object Planet{
-  def apply(planetBase: PlanetBase, atmosphere: Atmosphere)(x: Double, y: Double, radius: Double): Planet = {
-    Planet(x, y, radius, planetBase, atmosphere)
+  def apply(planetBase: PlanetBase, atmosphere: Atmosphere, name: String = NameGenerator.generate)
+           (x: Double, y: Double, radius: Double): Planet = {
+    
+    Planet(x, y, radius, planetBase, atmosphere, name)
   }
 }

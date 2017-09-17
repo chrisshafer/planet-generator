@@ -14,6 +14,15 @@ case class Color(r: Int, g: Int, b: Int, a: Double){
     )
   }
 
+
+  def lighten(percent: Double): Color = {
+    this.copy(
+      r = (r + r * percent).toInt,
+      g = (g + g * percent).toInt,
+      b = (b + b * percent).toInt
+    )
+  }
+
   def inverted: Color = {
     this.copy(
      r = (r * -1) + 255,
