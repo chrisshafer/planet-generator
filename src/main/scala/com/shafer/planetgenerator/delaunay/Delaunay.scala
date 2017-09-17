@@ -50,7 +50,9 @@ object Delaunay {
     }
   }
 
-  def convertTrianglesToEdges(completedTriangles: List[Triangle], currentTriangles: List[Triangle], point: Point)(pointList: List[Point]) =
+  def convertTrianglesToEdges(completedTriangles: List[Triangle],
+                              currentTriangles: List[Triangle],
+                              point: Point)(pointList: List[Point]) =
     currentTriangles.foldLeft((completedTriangles, List.empty[Triangle], EdgeBuffer.empty) ) {
       case ((completed, current, edges), triangle) =>
 
@@ -80,7 +82,7 @@ object Delaunay {
     (completedTrianglesUpdated, newlyCompletedTriangles.toList ::: currentTrianglesUpdated)
   }
 
-  def boundingTriangle(pointList: List[Point]) = {
+  def boundingTriangle(pointList: List[Point]): List[Point] = {
     val minPoint = Point(pointList.map(_.x).min, pointList.map(_.y).min)
     val maxPoint = Point(pointList.map(_.x).max, pointList.map(_.y).max)
     val midpoint = Point((minPoint.x + maxPoint.x)/2, (minPoint.y + maxPoint.y)/2)

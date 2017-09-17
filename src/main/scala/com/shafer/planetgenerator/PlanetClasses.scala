@@ -19,9 +19,10 @@ object PlanetClasses {
       planetBase = PlanetBase(
         color = planetColor,
         roughness = -1,
-        craters = -1
+        craters = -1,
+        colorGradient = Some((Color.random, Color.random))
       ),
-      atmosphere = Atmosphere(clouds = 30, cloudColor = () => {
+      atmosphere = Atmosphere(clouds = -1, cloudColor = () => {
         planetColor.inverted
       })
     )(x, y, r)

@@ -4,7 +4,8 @@ import com.shafer.planetgenerator.delaunay.{Point, Delaunay}
 import org.scalajs.dom.CanvasRenderingContext2D
 
 
-case class Atmosphere(clouds: Int = Atmosphere.defaultClouds, cloudColor: () => Color = Atmosphere.defaultColor) extends RenderedFeature{
+case class Atmosphere(clouds: Int = Atmosphere.defaultClouds,
+                      cloudColor: () => Color = Atmosphere.defaultColor) extends RenderedFeature{
 
   def drawClouds(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D) = {
     val maxWidth  = 150
@@ -50,7 +51,7 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds, cloudColor: () => 
 }
 
 object Atmosphere{
-  private val defaultColor = () => Color(255,255,255,1)
+  private val defaultColor  = () => Color(255,255,255,1)
   private val defaultClouds = (Math.random() * 15).toInt
   def none = Atmosphere(-1)
 }

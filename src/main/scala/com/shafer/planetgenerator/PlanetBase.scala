@@ -5,7 +5,8 @@ import org.scalajs.dom._
 
 case class PlanetBase(color: Color = Color.random,
                       roughness: Int = (Math.random() * 20 + 100).toInt,
-                      craters: Int = (Math.random() * 4 + 3).toInt) extends RenderedFeature{
+                      craters: Int = (Math.random() * 4 + 3).toInt,
+                      colorGradient: Option[(Color, Color)] = None ) extends RenderedFeature {
 
   val maxCraterSize = 30
   val minCraterSize = 10
@@ -13,6 +14,7 @@ case class PlanetBase(color: Color = Color.random,
   val craterResolution = 30
 
   private def drawBase(x: Double, y: Double, radius: Double, canvas: CanvasRenderingContext2D) = {
+    println("Rendering base")
     canvas.beginPath()
     canvas.arc(x, y, radius, 0, 2 * Math.PI, false)
     canvas.fillStyle   = color.build
@@ -22,6 +24,29 @@ case class PlanetBase(color: Color = Color.random,
     drawCraters(x, y, radius, canvas)
   }
 
+  private def drawBaseGradient(x: Double, y:Double,
+                               radius: Double, canvas: CanvasRenderingContext2D)(colors: (Color, Color)) = {
+    println("Rendering gradient")
+    println(colors._1.build)
+    println(colors._2.build)
+
+    val x0 = x - radius + (radius * Math.random()) * 2
+    val x1 = x - radius + (radius * Math.random()) * 2
+    val y0 = y - radius - ( radius * 0.1)
+    val y1 = y + radius + ( radius * 0.1)
+    println(x, y)
+    println(radius)
+    println( x0, x1, y0, y1)
+    val gradient = canvas.createLinearGradient(x0 = x0, y0 = y0, x1 = x1, y1 = y1)
+    gradient.addColorStop(0.0, colors._1.build)
+    gradient.addColorStop(1.0, colors._2.build)
+
+    canvas.beginPath()
+    canvas.arc(x, y, radius, 0, 2 * Math.PI, false)
+    canvas.fillStyle = gradient
+    canvas.fill()
+    canvas.clip()
+  }
 
   private def drawCraters(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D)= {
     for{
@@ -88,6 +113,9 @@ case class PlanetBase(color: Color = Color.random,
   }
 
   override def render(planet: Planet)(canvas: CanvasRenderingContext2D): Unit = {
-    drawBase(planet.x, planet.y, planet.radius, canvas)
+    planet.planetBase.colorGradient match {
+      case Some(grad) => drawBaseGradient(planet.x, planet.y, planet.radius, canvas)(grad)
+      case None       => drawBase(planet.x, planet.y, planet.radius, canvas)
+    }
   }
 }

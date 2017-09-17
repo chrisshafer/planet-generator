@@ -34,7 +34,7 @@ case class Color(r: Int, g: Int, b: Int, a: Double){
 
 object Color{
 
-  def random: Color = random(256)
+  def random: Color = random(1)
 
   def random(a: Int): Color = {
     val r: Int = (Math.random() * 256).toInt
@@ -55,7 +55,7 @@ object Color{
   def transparent = Color(0, 0, 0, 0)
   def white = Color(255, 255, 255, 1)
   def black = Color(0, 0, 0, 1)
-  def apply(r: Int, g: Int, b: Int): Color = Color(r, g, b, 255)
+  def apply(r: Int, g: Int, b: Int): Color = Color(r, g, b, 1)
 }
 
 trait RenderedFeature {
