@@ -36,7 +36,7 @@ object Color{
 
   def random: Color = random(1)
 
-  def random(a: Int): Color = {
+  def random(a: Double): Color = {
     val r: Int = (Math.random() * 256).toInt
     val g: Int = (Math.random() * 256).toInt
     val b: Int = (Math.random() * 256).toInt

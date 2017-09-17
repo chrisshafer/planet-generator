@@ -13,6 +13,21 @@ object PlanetClasses {
    atmosphere = Atmosphere.none
   )(x, y, r)
 
+  def irradiatedPlanet: PlanetFunction = (x: Double, y: Double, r: Double) => {
+    val planetColor = Color.random
+    Planet(
+      planetBase = PlanetBase(
+        color = planetColor,
+        roughness = -1,
+        craters = -1,
+        colorGradient = Some((planetColor, Color.random))
+      ),
+      atmosphere = Atmosphere(clouds = 25, cloudColor = () => {
+        planetColor.inverted
+      })
+    )(x, y, r)
+  }
+
   def gasPlanet: PlanetFunction = (x: Double, y: Double, r: Double) => {
     val planetColor = Color.random
     Planet(
@@ -22,9 +37,7 @@ object PlanetClasses {
         craters = -1,
         colorGradient = Some((Color.random, Color.random))
       ),
-      atmosphere = Atmosphere(clouds = -1, cloudColor = () => {
-        planetColor.inverted
-      })
+      atmosphere = Atmosphere(clouds = 5, cloudColor = () => Color.white.copy(a = 0.3))
     )(x, y, r)
   }
 
@@ -38,6 +51,6 @@ object PlanetClasses {
   )(x, y, r)
 
 
-  def random: PlanetFunction = Util.random(Seq(fracturedPlanet, gasPlanet, barrenPlanet)).get
+  def random: PlanetFunction = Util.random(Seq(fracturedPlanet, irradiatedPlanet, barrenPlanet, gasPlanet)).get
 
 }

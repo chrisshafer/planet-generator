@@ -16,7 +16,7 @@ object Generator extends JSApp {
     document.getElementById("container").appendChild(canvas)
     val (width, height, rctx) = initCanvas(canvas)
 
-    val planet: Planet = PlanetClasses.gasPlanet.apply(width/2, height/2, 200)
+    val planet: Planet = PlanetClasses.random.apply(width/2, height/2, Math.random() * 150 + 100)
 
     canvas.onclick = { event: MouseEvent =>
       planet.render(rctx)
