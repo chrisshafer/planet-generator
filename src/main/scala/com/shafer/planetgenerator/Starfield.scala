@@ -3,24 +3,42 @@ package com.shafer.planetgenerator
 import com.shafer.planetgenerator.delaunay.Point
 import org.scalajs.dom.raw.CanvasRenderingContext2D
 import Util._
-case class Starfield(starLocations: Seq[Point], color: Color) {
+
+case class Star(topLeft: Point, bound: Seq[Point], rotation: Double)
+object Star{
+
+  def atPoint(point: Point): Star = {
+    val path = Seq(
+      Point(5 + Math.random()*3, 0.0),
+      Point(5 + Math.random()*3, 5 + Math.random()*3),
+      Point(0.0, 5 + Math.random()*3),
+      Point(0, 0) // close
+    )
+    Star(point, path, Math.random() * 2.0 * Math.PI)
+  }
+}
+
+case class Starfield(starLocations: Seq[Star], color: Color) {
 
 
-  def render(canvas: CanvasRenderingContext2D): Unit = {
-    starLocations.foreach(renderStar(canvas))
+  def render(canvas: CanvasRenderingContext2D)(delta: Double): Unit = {
+    starLocations.map{ star =>
+      val newRot = star.rotation * ((delta % 1000) / 1000)
+
+      star.copy(rotation = newRot)
+    }.foreach(renderStar(canvas))
   }
 
-  def renderStar(canvas: CanvasRenderingContext2D)(point: Point): Unit = {
+  def renderStar(canvas: CanvasRenderingContext2D)(star: Star): Unit = {
     canvasOp(canvas){ ctx =>
       ctx.fillStyle = color.build
-      ctx.translate(point.x, point.y)
-      ctx.rotate(Math.random() * 2.0 * Math.PI)
+      ctx.translate(star.topLeft.x, star.topLeft.y)
+      ctx.rotate(star.rotation)
       ctx.beginPath()
       ctx.moveTo(0.0, 0.0)
-      ctx.lineTo(5 + Math.random()*3, 0.0)
-      ctx.lineTo(5 + Math.random()*3, 5 + Math.random()*3)
-      ctx.lineTo(0.0, 5 + Math.random()*3)
-      ctx.lineTo(0.0, 0.0)
+      star.bound.foreach{ case Point(x, y) =>
+        ctx.lineTo(x, y)
+      }
       ctx.fill()
       ctx.closePath()
     }
@@ -32,14 +50,14 @@ object Starfield{
 
   def random(number: Int, maxWidth: Double, maxHeight: Double) = {
 
-    val points = (0 until number by 1).map{ _ =>
-      Point(
+    val stars = (0 until number by 1).map{ _ =>
+      Star.atPoint(Point(
         x = Math.random() * maxWidth,
         y = Math.random() * maxHeight
-      )
+      ))
     }
 
-    Starfield(points, Color.white)
+    Starfield(stars, Color.white)
   }
 
 }

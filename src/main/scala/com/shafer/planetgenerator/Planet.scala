@@ -37,7 +37,7 @@ case class Planet(x: Double,
 
   def renderName(ctx: CanvasRenderingContext2D) = {
     ctx.save()
-    ctx.font = "25pt Oribitron"
+    ctx.font = "25pt Orbitron"
     ctx.textAlign = "center"
     ctx.fillStyle = backgroundColor.lighten(2.00).build
     ctx.fillText(name, x, y + radius + namePadding + 15 + 5)

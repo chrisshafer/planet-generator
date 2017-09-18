@@ -22,9 +22,14 @@ object Generator extends JSApp {
     canvas.onclick = { event: MouseEvent =>
       planet.render(rctx)
     }
-    starfield.render(rctx)
+
+    starfield.render(rctx)(1.0)
     planet.render(rctx)
   }
+
+
+
+
 
   def initCanvas(canvas: html.Canvas): (Int, Int, dom.CanvasRenderingContext2D) = {
     val width = dom.document.getElementById("container").clientWidth
