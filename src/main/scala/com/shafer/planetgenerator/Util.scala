@@ -55,7 +55,7 @@ object Color{
   def transparent = Color(0, 0, 0, 0)
   def white = Color(255, 255, 255, 1)
   def black = Color(0, 0, 0, 1)
-  def apply(r: Int, g: Int, b: Int): Color = Color(r, g, b, 1)
+  def apply(r: Int, g: Int, b: Int): Color = Color(r, g, b, 1.0)
 }
 
 trait RenderedFeature {
@@ -77,6 +77,14 @@ object Experimental{
 }
 
 object Util{
+
+
+  def canvasOp(canvas: CanvasRenderingContext2D)(operation: (CanvasRenderingContext2D) => Unit) = {
+    canvas.save()
+    operation(canvas)
+    canvas.restore()
+  }
+
 
   def random[A](seq: Seq[A]): Option[A] = {
     if(seq.nonEmpty){

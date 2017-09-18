@@ -23,7 +23,7 @@ object PlanetClasses {
         colorGradient = Some((planetColor, Color.random))
       ),
       atmosphere = Atmosphere(clouds = 25, cloudColor = () => {
-        planetColor.inverted
+        planetColor.inverted.copy(a = 0.5)
       })
     )(x, y, r)
   }

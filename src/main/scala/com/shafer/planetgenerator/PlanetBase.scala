@@ -46,6 +46,7 @@ case class PlanetBase(color: Color = Color.random,
     canvas.fillStyle = gradient
     canvas.fill()
     canvas.clip()
+    canvas.closePath()
   }
 
   private def drawCraters(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D)= {
@@ -81,6 +82,8 @@ case class PlanetBase(color: Color = Color.random,
 
         canvas.fill()
         canvas.stroke()
+        canvas.closePath()
+
       }
     }
 
@@ -108,6 +111,7 @@ case class PlanetBase(color: Color = Color.random,
       canvas.lineTo(triangle._3.x , triangle._3.y)
       canvas.fill()
       canvas.stroke()
+      canvas.closePath()
     }
 
   }

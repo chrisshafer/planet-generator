@@ -15,7 +15,7 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds,
     val numberOfVectors = 30
 
     (0 to clouds).foreach { cloud =>
-      val width = Math.random() * (maxWidth - minWidth) + minWidth
+      val width  = Math.random() * (maxWidth - minWidth) + minWidth
       val height = Math.random() * (maxHeight - minHeight) + minHeight
       val xloc   = Math.random() * planetR * 2 + planetX - planetR
       val yloc   = Math.random() * planetR * 2 + planetY - planetR
@@ -28,11 +28,15 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds,
       } yield {
         Point(x, y)
       }
+
       val triangles = Delaunay.triangulate(points.toList)
       triangles.foreach { triangle =>
-        val tricolor = cloudColor().darken(Math.random() * .15).build
-        canvas.strokeStyle = tricolor
-        canvas.fillStyle = tricolor
+        val tricolor = cloudColor().darken(Math.random() * .15)
+
+        if(tricolor.a < 1.0) canvas.strokeStyle = Color.transparent.build
+        else                 canvas.strokeStyle = tricolor.build
+
+        canvas.fillStyle = tricolor.build
         canvas.beginPath()
         canvas.moveTo(triangle._1.x, triangle._1.y)
         canvas.lineTo(triangle._2.x, triangle._2.y)
@@ -40,6 +44,7 @@ case class Atmosphere(clouds: Int = Atmosphere.defaultClouds,
         canvas.fill()
         canvas.lineWidth = 0
         canvas.stroke()
+        canvas.closePath()
       }
     }
 

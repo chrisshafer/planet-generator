@@ -26,17 +26,18 @@ case class Planet(x: Double,
 
   def renderAliasOverlayFix(ctx: CanvasRenderingContext2D) = {
     ctx.save()
-    ctx.beginPath()
-    ctx.arc(x, y, radius -2, 0, 2 * Math.PI, false)
     ctx.strokeStyle = backgroundColor.build
-    ctx.lineWidth = 5
+    ctx.beginPath()
+    ctx.arc(x, y, radius -0.5, 0, 2 * Math.PI, false)
+    ctx.lineWidth = 3
     ctx.stroke()
+    ctx.closePath()
     ctx.restore()
   }
 
   def renderName(ctx: CanvasRenderingContext2D) = {
     ctx.save()
-    ctx.font = "30pt Calibri"
+    ctx.font = "25pt Oribitron"
     ctx.textAlign = "center"
     ctx.fillStyle = backgroundColor.lighten(2.00).build
     ctx.fillText(name, x, y + radius + namePadding + 15 + 5)
