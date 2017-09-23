@@ -34,7 +34,7 @@
 
 body{
   margin: 0;
-  background-color: #F3F3F3
+  background-color: #141414;
 }
 
 #container{
@@ -43,4 +43,14 @@ body{
   canvas{
     background-color: #141414;
   }
+}
+
+.reload-button{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 30px;
+
+
 }

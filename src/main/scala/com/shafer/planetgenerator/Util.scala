@@ -2,6 +2,8 @@ package com.shafer.planetgenerator
 
 import org.scalajs.dom._
 
+import scala.scalajs.js.Date
+
 case class Color(r: Int, g: Int, b: Int, a: Double){
   override def toString: String = s"rgba($r, $g, $b, $a)"
   def build = this.toString
@@ -78,6 +80,13 @@ object Experimental{
 
 object Util{
 
+
+  def timer[T](fn: () => T)(name: String) = {
+    val time = Date.now()
+    val res = fn()
+    println(s"$name took ${Date.now() - time}ms")
+    res
+  }
 
   def canvasOp(canvas: CanvasRenderingContext2D)(operation: (CanvasRenderingContext2D) => Unit) = {
     canvas.save()

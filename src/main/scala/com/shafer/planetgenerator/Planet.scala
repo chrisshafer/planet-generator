@@ -3,6 +3,7 @@ package com.shafer.planetgenerator
 import org.scalajs.dom._
 
 import scala.scalajs.js.Date
+import Util._
 
 case class Planet(x: Double,
                   y: Double,
@@ -14,14 +15,12 @@ case class Planet(x: Double,
   val namePadding = 20
   val backgroundColor = Color(27, 27, 27)
   def render(ctx: CanvasRenderingContext2D) = {
-    val time = Date.now()
     ctx.save()
-    planetBase.render(this)(ctx)
-    atmosphere.render(this)(ctx)
+    timer( () => planetBase.render(this)(ctx) )("planetBase")
+    timer( () => atmosphere.render(this)(ctx) )("atmosphere")
     ctx.restore()
     renderAliasOverlayFix(ctx)
     renderName(ctx)
-    println(s"${Date.now() - time}ms")
   }
 
   def renderAliasOverlayFix(ctx: CanvasRenderingContext2D) = {

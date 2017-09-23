@@ -59,7 +59,7 @@ object PlanetBaseTextured {
   val maxCraterSize = 30
   val minCraterSize = 10
   val craterEdgeRoughness = .70
-  val craterResolution = 30
+  val craterResolution = 25
 
 
   def random(x: Double,
@@ -69,8 +69,8 @@ object PlanetBaseTextured {
             roughness: Int = (Math.random() * 20 + 100).toInt,
             numberOfCraters: Int = (Math.random() * 4 + 3).toInt) = {
     new PlanetBaseTextured(
-      craters = randomCraters(numberOfCraters, x, y, radius),
-      texture = randomTexture(roughness, x, y, radius),
+      craters = timer( () => randomCraters(numberOfCraters, x, y, radius))("genCraters"),
+      texture = timer( () => randomTexture(roughness, x, y, radius))("Gen texture"),
       color = color
     )
   }
@@ -121,7 +121,7 @@ case class Crater(xpos: Double, ypos: Double, points: Seq[Point]){
 
   def render( color: Color)(canvas: CanvasRenderingContext2D) = {
     if(points.length > 2){
-      val tricolor = color.darken(.20).build
+      val tricolor = color.darken(.30).build
       canvas.lineWidth = 0
       canvas.fillStyle = tricolor
       canvas.strokeStyle = tricolor

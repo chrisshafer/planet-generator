@@ -47,15 +47,18 @@ case class Starfield(starLocations: Seq[Star], color: Color) {
 
 object Starfield{
 
+  def pow2(thing: Double) = thing * thing
+  def random(number: Int, maxWidth: Double, maxHeight: Double, exclusionRadius: Double = 0) = {
 
-  def random(number: Int, maxWidth: Double, maxHeight: Double) = {
+    def exclude(point: Point) = (pow2(point.x - maxWidth/2) + pow2(point.y - maxHeight/2)) < pow2(exclusionRadius)
 
     val stars = (0 until number by 1).map{ _ =>
-      Star.atPoint(Point(
+     Point(
         x = Math.random() * maxWidth,
         y = Math.random() * maxHeight
-      ))
-    }
+      )
+    }.filterNot(exclude)
+     .map(Star.atPoint)
 
     Starfield(stars, Color.white)
   }
