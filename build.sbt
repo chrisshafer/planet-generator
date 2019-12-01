@@ -2,7 +2,7 @@ enablePlugins(ScalaJSPlugin)
 import sbt.Keys._
 
 val projectName  = "planet-generator"
-val scalaV       = "2.11.8"
+val scalaV       = "2.12.10"
 val org          = "com.shafer.planetgenerator"
 
 name := projectName
@@ -19,6 +19,6 @@ persistLauncher in Test := false
 
 jsDependencies ++= Seq() // Web Jars
 
-libraryDependencies ++= Seq("org.scala-js" %%% "scalajs-dom" % "0.9.1") // JS Only
+libraryDependencies ++= Seq("org.scala-js" %%% "scalajs-dom" % "0.9.7") // JS Only
 
 
