@@ -17,6 +17,7 @@ package object delaunay {
       else EdgeBuffer(set + edge)
     }
   }
+
   object EdgeBuffer{
     def empty = EdgeBuffer(Set.empty[Edge])
   }

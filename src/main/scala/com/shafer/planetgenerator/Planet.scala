@@ -14,6 +14,7 @@ case class Planet(x: Double,
 
   val namePadding = 20
   val backgroundColor = Color(27, 27, 27)
+
   def render(ctx: CanvasRenderingContext2D) = {
     ctx.save()
     timer( () => planetBase.render(this)(ctx) )("planetBase")
@@ -38,7 +39,7 @@ case class Planet(x: Double,
     ctx.save()
     ctx.font = "25pt Orbitron"
     ctx.textAlign = "center"
-    ctx.fillStyle = backgroundColor.lighten(2.00).build
+    ctx.fillStyle = Color(200, 200, 200, 1.0).build
     ctx.fillText(name, x, y + radius + namePadding + 15 + 5)
     ctx.restore()
   }

@@ -21,9 +21,6 @@ object Generator extends JSApp {
     val planet: Planet = PlanetClasses.random.apply(width/2, height/2, Math.random() * 150 + 100)
     val starfield: Starfield = Starfield.random(100, width, height, 300)
 
-    canvas.onclick = { event: MouseEvent =>
-      planet.render(rctx)
-    }
     appendButton(planet, starfield, rctx, width, height)
     renderCycle(0, starfield, planet, rctx, width, height)
   }
