@@ -39,6 +39,8 @@
         }
 
         body{
+            font-family: 'Orbitron', sans-serif;
+
             margin: 0;
             background-color: #141414;
         }
@@ -56,8 +58,33 @@
             position: fixed;
             right: 20px;
             bottom: 20px;
-            width: 50px;
             height: 30px;
+            padding: 4px 8px 2px 8px;
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: 16px;
+            background-color: #141414;
+            border: 2px solid rgb(200, 200, 200);
+            border-radius: 4px;
+            color: rgb(200, 200, 200);
+
+            outline: none;
+            cursor: pointer;
+
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .reload-button:hover{
+            border: 2px solid white;
+            color: white;
+        }
+
+        #title{
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            color: rgb(200, 200, 200);
+
         }
     </style>
 
@@ -67,5 +94,6 @@
     <script type="text/javascript" src="target/scala-2.12/planet-generator-fastopt.js"></script>
     <script type="text/javascript" src="target/scala-2.12/planet-generator-jsdeps.js"></script>
     <script type="text/javascript" src="target/scala-2.12/planet-generator-launcher.js"></script>
+    <div id="title">Planet Generator</div>
 </body>
 </html>
