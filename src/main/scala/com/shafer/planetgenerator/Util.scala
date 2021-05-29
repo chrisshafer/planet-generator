@@ -16,7 +16,6 @@ case class Color(r: Int, g: Int, b: Int, a: Double){
     )
   }
 
-
   def lighten(percent: Double): Color = {
     this.copy(
       r = (r + r * percent).toInt,
@@ -37,7 +36,6 @@ case class Color(r: Int, g: Int, b: Int, a: Double){
 object Color{
 
   def random: Color = random(1)
-
   def random(a: Double): Color = {
     val r: Int = (Math.random() * 256).toInt
     val g: Int = (Math.random() * 256).toInt
@@ -65,22 +63,18 @@ trait RenderedFeature {
 }
 
 object Experimental{
-
   def drawEllipse(x: Double, y: Double, rx: Double, ry: Double)(canvas: CanvasRenderingContext2D): Unit = {
-      canvas.save()
-      canvas.beginPath()
-      canvas.translate(x-rx, y-ry)
-      canvas.scale(rx, ry)
-      canvas.arc(1, 1, 1, 0, 2 * Math.PI, false)
-      canvas.restore()
-      canvas.fill()
-
+    canvas.save()
+    canvas.beginPath()
+    canvas.translate(x - rx, y - ry)
+    canvas.scale(rx, ry)
+    canvas.arc(1, 1, 1, 0, 2 * Math.PI, false)
+    canvas.restore()
+    canvas.fill()
   }
 }
 
 object Util{
-
-
   def timer[T](fn: () => T)(name: String) = {
     val time = Date.now()
     val res = fn()
@@ -93,7 +87,6 @@ object Util{
     operation(canvas)
     canvas.restore()
   }
-
 
   def random[A](seq: Seq[A]): Option[A] = {
     if(seq.nonEmpty){

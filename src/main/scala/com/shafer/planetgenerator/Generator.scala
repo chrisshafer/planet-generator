@@ -1,6 +1,5 @@
 package com.shafer.planetgenerator
 
-
 import org.scalajs.dom
 import org.scalajs.dom._
 import org.scalajs.dom.html.Canvas
@@ -13,7 +12,6 @@ import org.w3c.dom.html.HTMLDivElement
 object Generator extends JSApp {
 
   def main(): Unit = {
-
     val canvas: Canvas = document.createElement("canvas").asInstanceOf[html.Canvas]
     document.getElementById("container").appendChild(canvas)
     val (width, height, rctx) = initCanvas(canvas)
@@ -25,7 +23,6 @@ object Generator extends JSApp {
     renderCycle(0, starfield, planet, rctx, width, height)
   }
 
-
   def appendButton(planet: Planet, starfield: Starfield, rctx: CanvasRenderingContext2D, width: Double, height: Double): Unit = {
     val button = dom.document.createElement("button").asInstanceOf[html.Button]
     button.setAttribute("class", "reload-button")
@@ -36,9 +33,6 @@ object Generator extends JSApp {
     }
     dom.document.body.appendChild(button)
   }
-
-
-
 
   def renderCycle(delta: Double, starfield: Starfield, planet: Planet, rctx: CanvasRenderingContext2D, width: Double, height: Double): Unit = {
     timer { () =>

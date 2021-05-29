@@ -6,7 +6,6 @@ import Util._
 
 case class Star(topLeft: Point, bound: Seq[Point], rotation: Double)
 object Star{
-
   def atPoint(point: Point): Star = {
     val path = Seq(
       Point(5 + Math.random()*3, 0.0),
@@ -19,7 +18,6 @@ object Star{
 }
 
 case class Starfield(starLocations: Seq[Star], color: Color) {
-
 
   def render(canvas: CanvasRenderingContext2D)(delta: Double): Unit = {
     starLocations.map{ star =>
@@ -45,7 +43,7 @@ case class Starfield(starLocations: Seq[Star], color: Color) {
   }
 }
 
-object Starfield{
+object Starfield {
 
   def pow2(thing: Double) = thing * thing
   def random(number: Int, maxWidth: Double, maxHeight: Double, exclusionRadius: Double = 0) = {
@@ -62,5 +60,4 @@ object Starfield{
 
     Starfield(stars, Color.white)
   }
-
 }

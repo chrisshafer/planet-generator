@@ -26,9 +26,7 @@ case class PlanetBaseGradient(x0: Double, y0: Double, x1: Double, y1: Double, co
   }
 }
 
-
 object PlanetBaseGradient {
-
   def random(x: Double, y: Double, radius: Double, colors: (Color, Color)) = {
     val x0 = x - radius + (radius * Math.random()) * 2
     val x1 = x - radius + (radius * Math.random()) * 2
@@ -52,7 +50,6 @@ case class PlanetBaseTextured(craters: Seq[Crater], texture: Triangles, color: C
       craters.foreach(_.render(color)(canvas))
     }
   }
-
 }
 
 object PlanetBaseTextured {
@@ -77,10 +74,10 @@ object PlanetBaseTextured {
 
   private def randomCraters(numberOfCraters: Int, planetX: Double, planetY: Double, planetR: Double) = {
     for{
-      _ <- 0 to numberOfCraters by 1
+      _              <- 0 to numberOfCraters by 1
       xpos           = Math.random() * planetR * 2 + planetX - planetR
       ypos           = Math.random() * planetR * 2 + planetY - planetR
-      radius           = (Math.random() * (maxCraterSize - minCraterSize) ) + minCraterSize
+      radius         = (Math.random() * (maxCraterSize - minCraterSize) ) + minCraterSize
     } yield {
       val craterPoints = (0 to craterResolution by 1).map { _ =>
         Math.random() * Math.PI * 2
@@ -96,7 +93,7 @@ object PlanetBaseTextured {
 
   private def randomTexture(roughness: Int, planetX: Double, planetY: Double, planetR: Double) = {
     val surfaceTexture = for{
-      roughness   <- 0 to roughness by 1
+      _           <- 0 to roughness by 1
       x           = Math.random() * planetR * 2 + planetX - planetR
       y           = Math.random() * planetR * 2 + planetY - planetR
     } yield {
@@ -110,12 +107,10 @@ object PlanetBaseTextured {
 }
 
 case class PlanetBase(fill: PlanetBaseFill) extends RenderedFeature {
-
   override def render(planet: Planet)(canvas: CanvasRenderingContext2D): Unit = {
     fill.render(planet.x, planet.y, planet.radius)(canvas)
   }
 }
-
 
 case class Crater(xpos: Double, ypos: Double, points: Seq[Point]){
 

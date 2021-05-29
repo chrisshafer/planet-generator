@@ -5,7 +5,6 @@ import org.scalajs.dom.CanvasRenderingContext2D
 import Util._
 
 case class Cloud(points: Seq[(Point, Point, Point)]){
-
   def render(color: Color)(canvas: CanvasRenderingContext2D) = {
     points.foreach { triangle =>
       val tricolor = color.darken(Math.random() * .15)
@@ -26,12 +25,12 @@ case class Cloud(points: Seq[(Point, Point, Point)]){
   }
 }
 
-case class Atmosphere(clouds: Seq[Cloud],
-                      cloudColor: () => Color = Atmosphere.defaultColor) extends RenderedFeature{
+case class Atmosphere(
+  clouds: Seq[Cloud],
+  cloudColor: () => Color = Atmosphere.defaultColor
+) extends RenderedFeature{
 
   def drawClouds(planetX: Double, planetY: Double, planetR: Double, canvas: CanvasRenderingContext2D) = {
-
-
     canvasOp(canvas) { ctx =>
       ctx.beginPath()
       ctx.arc(planetX, planetY, planetR, 0, 2 * Math.PI, false)
@@ -41,7 +40,6 @@ case class Atmosphere(clouds: Seq[Cloud],
       }
       ctx.closePath()
     }
-
   }
 
   override def render(planet: Planet)(canvas: CanvasRenderingContext2D): Unit = {
@@ -49,7 +47,8 @@ case class Atmosphere(clouds: Seq[Cloud],
   }
 }
 
-object Atmosphere{
+object Atmosphere {
+
   private val defaultColor  = () => Color(255,255,255,1)
   private val defaultClouds = (Math.random() * 15).toInt
   def none = Atmosphere(Seq.empty)
