@@ -4,15 +4,15 @@ import org.scalajs.dom._
 
 import scala.scalajs.js.Date
 import Util._
+import com.shafer.planetgenerator.delaunay.Point
 
-case class Planet(x: Double,
-                  y: Double,
+case class Planet(position: Point,
                   radius: Double,
                   planetBase: PlanetBase,
                   atmosphere: Atmosphere,
                   name: String) {
 
-  val namePadding = 20
+  val namePadding     = 20
   val backgroundColor = Color(27, 27, 27)
 
   def render(ctx: CanvasRenderingContext2D) = {
@@ -28,7 +28,7 @@ case class Planet(x: Double,
     ctx.save()
     ctx.strokeStyle = backgroundColor.build
     ctx.beginPath()
-    ctx.arc(x, y, radius -0.5, 0, 2 * Math.PI, false)
+    ctx.arc(position.x, position.y, radius -0.5, 0, 2 * Math.PI, false)
     ctx.lineWidth = 3
     ctx.stroke()
     ctx.closePath()
@@ -40,15 +40,14 @@ case class Planet(x: Double,
     ctx.font = "25pt Orbitron"
     ctx.textAlign = "center"
     ctx.fillStyle = Color(200, 200, 200, 1.0).build
-    ctx.fillText(name, x, y + radius + namePadding + 15 + 5)
+    ctx.fillText(name, position.x, position.y + radius + namePadding + 15 + 5)
     ctx.restore()
   }
 }
 
 object Planet{
   def apply(planetBase: PlanetBase, atmosphere: Atmosphere, name: String = NameGenerator.generate)
-           (x: Double, y: Double, radius: Double): Planet = {
-    
-    Planet(x, y, radius, planetBase, atmosphere, name)
+           (position: Point, radius: Double): Planet = {
+    Planet(position, radius, planetBase, atmosphere, name)
   }
 }

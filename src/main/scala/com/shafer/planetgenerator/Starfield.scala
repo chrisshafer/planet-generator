@@ -8,8 +8,8 @@ case class Star(topLeft: Point, bound: Seq[Point], rotation: Double)
 object Star{
   def atPoint(point: Point): Star = {
     val path = Seq(
-      Point(5 + Math.random()*3, 0.0),
-      Point(5 + Math.random()*3, 5 + Math.random()*3),
+      Point(5 + Math.random()* 3, 0.0),
+      Point(5 + Math.random()* 3, 5 + Math.random()*3),
       Point(0.0, 5 + Math.random()*3),
       Point(0, 0) // close
     )

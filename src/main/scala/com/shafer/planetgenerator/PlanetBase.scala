@@ -27,11 +27,11 @@ case class PlanetBaseGradient(x0: Double, y0: Double, x1: Double, y1: Double, co
 }
 
 object PlanetBaseGradient {
-  def random(x: Double, y: Double, radius: Double, colors: (Color, Color)) = {
-    val x0 = x - radius + (radius * Math.random()) * 2
-    val x1 = x - radius + (radius * Math.random()) * 2
-    val y0 = y - radius - (radius * 0.1)
-    val y1 = y + radius + (radius * 0.1)
+  def random(planetPosition: Point, radius: Double, colors: (Color, Color)) = {
+    val x0 = planetPosition.x - radius + (radius * Math.random()) * 2
+    val x1 = planetPosition.x - radius + (radius * Math.random()) * 2
+    val y0 = planetPosition.y - radius - (radius * 0.1)
+    val y1 = planetPosition.y + radius + (radius * 0.1)
     apply(x0 = x0, y0 = y0, x1 = x1, y1 = y1, colors._1, colors._2)
   }
 }
@@ -59,15 +59,16 @@ object PlanetBaseTextured {
   val craterResolution = 25
 
 
-  def random(x: Double,
-            y: Double,
-            radius: Double,
-            color: Color = Color.random,
-            roughness: Int = (Math.random() * 20 + 100).toInt,
-            numberOfCraters: Int = (Math.random() * 4 + 3).toInt) = {
+  def random(
+    planetPosition: Point,
+    radius: Double,
+    color: Color = Color.random,
+    roughness: Int = (Math.random() * 20 + 100).toInt,
+    numberOfCraters: Int = (Math.random() * 4 + 3).toInt
+  ) = {
     new PlanetBaseTextured(
-      craters = timer( () => randomCraters(numberOfCraters, x, y, radius))("genCraters"),
-      texture = timer( () => randomTexture(roughness, x, y, radius))("Gen texture"),
+      craters = timer( () => randomCraters(numberOfCraters, planetPosition.x, planetPosition.y, radius))("genCraters"),
+      texture = timer( () => randomTexture(roughness, planetPosition.x, planetPosition.y, radius))("Gen texture"),
       color = color
     )
   }
@@ -108,7 +109,7 @@ object PlanetBaseTextured {
 
 case class PlanetBase(fill: PlanetBaseFill) extends RenderedFeature {
   override def render(planet: Planet)(canvas: CanvasRenderingContext2D): Unit = {
-    fill.render(planet.x, planet.y, planet.radius)(canvas)
+    fill.render(planet.position.x, planet.position.y, planet.radius)(canvas)
   }
 }
 

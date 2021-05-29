@@ -43,7 +43,7 @@ case class Atmosphere(
   }
 
   override def render(planet: Planet)(canvas: CanvasRenderingContext2D): Unit = {
-    drawClouds(planet.x, planet.y, planet.radius, canvas)
+    drawClouds(planet.position.x, planet.position.y, planet.radius, canvas)
   }
 }
 
@@ -59,8 +59,8 @@ object Atmosphere {
   val minHeight = 20
   val numberOfVectors = 30
 
-  def random(planetX: Double, planetY: Double, planetR: Double, cloudsNumber: Int = defaultClouds, cloudColor: () => Color) = {
-    val clouds = (0 to cloudsNumber by 1).map( _ => randomCloud(planetX, planetY, planetR))
+  def random(planetPosition: Point, planetR: Double, cloudsNumber: Int = defaultClouds, cloudColor: () => Color) = {
+    val clouds = (0 to cloudsNumber by 1).map( _ => randomCloud(planetPosition.x, planetPosition.y, planetR))
     Atmosphere(clouds, cloudColor)
   }
 

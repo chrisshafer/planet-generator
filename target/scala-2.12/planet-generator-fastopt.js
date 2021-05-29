@@ -1085,17 +1085,17 @@ var $asArrayOf_J = $makeAsArrayOfPrimitive($isArrayOf_J, "J");
 var $asArrayOf_F = $makeAsArrayOfPrimitive($isArrayOf_F, "F");
 var $asArrayOf_D = $makeAsArrayOfPrimitive($isArrayOf_D, "D");
 
-function $is_F3(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.F3)))
+function $is_Lcom_shafer_planetgenerator_GenerativePlanet(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_shafer_planetgenerator_GenerativePlanet)))
 }
-function $as_F3(obj) {
-  return (($is_F3(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.Function3"))
+function $as_Lcom_shafer_planetgenerator_GenerativePlanet(obj) {
+  return (($is_Lcom_shafer_planetgenerator_GenerativePlanet(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "com.shafer.planetgenerator.GenerativePlanet"))
 }
-function $isArrayOf_F3(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.F3)))
+function $isArrayOf_Lcom_shafer_planetgenerator_GenerativePlanet(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_shafer_planetgenerator_GenerativePlanet)))
 }
-function $asArrayOf_F3(obj, depth) {
-  return (($isArrayOf_F3(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.Function3;", depth))
+function $asArrayOf_Lcom_shafer_planetgenerator_GenerativePlanet(obj, depth) {
+  return (($isArrayOf_Lcom_shafer_planetgenerator_GenerativePlanet(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.shafer.planetgenerator.GenerativePlanet;", depth))
 }
 /** @constructor */
 function $c_O() {
@@ -1692,105 +1692,11 @@ $h_Lcom_shafer_planetgenerator_PlanetClasses$.prototype = $c_Lcom_shafer_planetg
 $c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.init___ = (function() {
   return this
 });
-$c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.fracturedPlanet__F3 = (function() {
-  return new $c_sjsr_AnonFunction3().init___sjs_js_Function3((function($this) {
-    return (function(x$2, y$2, r$2) {
-      var x = $uD(x$2);
-      var y = $uD(y$2);
-      var r = $uD(r$2);
-      var jsx$1 = $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$();
-      var this$1 = $m_Lcom_shafer_planetgenerator_Color$();
-      var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill(jsx$1.random__D__D__D__Lcom_shafer_planetgenerator_Color__I__I__Lcom_shafer_planetgenerator_PlanetBaseTextured(x, y, r, this$1.random__D__Lcom_shafer_planetgenerator_Color(1.0), ((60 + $doubleToInt((100 * $uD($g.Math.random())))) | 0), (-1)));
-      var atmosphere = $m_Lcom_shafer_planetgenerator_Atmosphere$().random__D__D__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere(x, y, r, 5, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this$1) {
-        return (function() {
-          return new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(255, 255, 255, 1.0)
-        })
-      })($this)));
-      var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
-      return new $c_Lcom_shafer_planetgenerator_Planet().init___D__D__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(x, y, r, planetBase, atmosphere, name)
-    })
-  })(this))
-});
-$c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.irradiatedPlanet__F3 = (function() {
-  return new $c_sjsr_AnonFunction3().init___sjs_js_Function3((function($this) {
-    return (function(x$2, y$2, r$2) {
-      var x = $uD(x$2);
-      var y = $uD(y$2);
-      var r = $uD(r$2);
-      var this$1 = $m_Lcom_shafer_planetgenerator_Color$();
-      var planetColor = this$1.random__D__Lcom_shafer_planetgenerator_Color(1.0);
-      var this$2 = $m_Lcom_shafer_planetgenerator_Color$();
-      var _2 = this$2.random__D__Lcom_shafer_planetgenerator_Color(1.0);
-      var x0 = ((x - r) + (2 * (r * $uD($g.Math.random()))));
-      var x1 = ((x - r) + (2 * (r * $uD($g.Math.random()))));
-      var y0 = ((y - r) - (0.1 * r));
-      var y1 = ((y + r) + (0.1 * r));
-      var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill(new $c_Lcom_shafer_planetgenerator_PlanetBaseGradient().init___D__D__D__D__Lcom_shafer_planetgenerator_Color__Lcom_shafer_planetgenerator_Color(x0, y0, x1, y1, planetColor, _2));
-      var atmosphere = $m_Lcom_shafer_planetgenerator_Atmosphere$().random__D__D__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere(x, y, r, 25, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this$1, planetColor$1) {
-        return (function() {
-          var qual$1 = planetColor$1.inverted__Lcom_shafer_planetgenerator_Color();
-          var x$2$1 = qual$1.r$1;
-          var x$3 = qual$1.g$1;
-          var x$4 = qual$1.b$1;
-          return new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(x$2$1, x$3, x$4, 0.5)
-        })
-      })($this, planetColor)));
-      var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
-      return new $c_Lcom_shafer_planetgenerator_Planet().init___D__D__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(x, y, r, planetBase, atmosphere, name)
-    })
-  })(this))
-});
-$c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.random__F3 = (function() {
+$c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.random__Lcom_shafer_planetgenerator_GenerativePlanet = (function() {
   var jsx$2 = $m_Lcom_shafer_planetgenerator_Util$();
   var jsx$1 = $m_sc_Seq$();
-  var array = [this.fracturedPlanet__F3(), this.irradiatedPlanet__F3(), this.barrenPlanet__F3(), this.gasPlanet__F3()];
-  return $as_F3(jsx$2.random__sc_Seq__s_Option($as_sc_Seq(jsx$1.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)))).get__O())
-});
-$c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.gasPlanet__F3 = (function() {
-  return new $c_sjsr_AnonFunction3().init___sjs_js_Function3((function($this) {
-    return (function(x$2, y$2, r$2) {
-      var x = $uD(x$2);
-      var y = $uD(y$2);
-      var r = $uD(r$2);
-      var this$1 = $m_Lcom_shafer_planetgenerator_Color$();
-      var planetColor = this$1.random__D__Lcom_shafer_planetgenerator_Color(1.0);
-      var this$2 = $m_Lcom_shafer_planetgenerator_Color$();
-      var _2 = this$2.random__D__Lcom_shafer_planetgenerator_Color(1.0);
-      var x0 = ((x - r) + (2 * (r * $uD($g.Math.random()))));
-      var x1 = ((x - r) + (2 * (r * $uD($g.Math.random()))));
-      var y0 = ((y - r) - (0.1 * r));
-      var y1 = ((y + r) + (0.1 * r));
-      var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill(new $c_Lcom_shafer_planetgenerator_PlanetBaseGradient().init___D__D__D__D__Lcom_shafer_planetgenerator_Color__Lcom_shafer_planetgenerator_Color(x0, y0, x1, y1, planetColor, _2));
-      var atmosphere = $m_Lcom_shafer_planetgenerator_Atmosphere$().random__D__D__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere(x, y, r, 5, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this$1) {
-        return (function() {
-          var qual$1 = new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(255, 255, 255, 1.0);
-          var x$2$1 = qual$1.r$1;
-          var x$3 = qual$1.g$1;
-          var x$4 = qual$1.b$1;
-          return new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(x$2$1, x$3, x$4, 0.3)
-        })
-      })($this)));
-      var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
-      return new $c_Lcom_shafer_planetgenerator_Planet().init___D__D__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(x, y, r, planetBase, atmosphere, name)
-    })
-  })(this))
-});
-$c_Lcom_shafer_planetgenerator_PlanetClasses$.prototype.barrenPlanet__F3 = (function() {
-  return new $c_sjsr_AnonFunction3().init___sjs_js_Function3((function($this) {
-    return (function(x$2, y$2, r$2) {
-      var x = $uD(x$2);
-      var y = $uD(y$2);
-      var r = $uD(r$2);
-      var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill($m_Lcom_shafer_planetgenerator_PlanetBaseTextured$().random__D__D__D__Lcom_shafer_planetgenerator_Color__I__I__Lcom_shafer_planetgenerator_PlanetBaseTextured(x, y, r, $m_Lcom_shafer_planetgenerator_Color$().randomGreyscale__I__I__Lcom_shafer_planetgenerator_Color(150, 200), ((100 + $doubleToInt((250 * $uD($g.Math.random())))) | 0), $doubleToInt((7 + (10 * $uD($g.Math.random()))))));
-      $m_Lcom_shafer_planetgenerator_Atmosphere$();
-      $m_sc_Seq$();
-      $m_sci_Seq$();
-      var this$6 = new $c_scm_ListBuffer().init___();
-      var atmosphere = new $c_Lcom_shafer_planetgenerator_Atmosphere().init___sc_Seq__F0(this$6.toList__sci_List(), ($m_Lcom_shafer_planetgenerator_Atmosphere$(), $m_Lcom_shafer_planetgenerator_Atmosphere$().defaultColor$1));
-      var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
-      return new $c_Lcom_shafer_planetgenerator_Planet().init___D__D__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(x, y, r, planetBase, atmosphere, name)
-    })
-  })(this))
+  var array = [$m_Lcom_shafer_planetgenerator_BarrenPlanet$(), $m_Lcom_shafer_planetgenerator_IrradiatedPlanet$(), $m_Lcom_shafer_planetgenerator_GasPlanet$(), $m_Lcom_shafer_planetgenerator_FracturedPlanet$()];
+  return $as_Lcom_shafer_planetgenerator_GenerativePlanet(jsx$2.random__sc_Seq__s_Option($as_sc_Seq(jsx$1.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)))).get__O())
 });
 var $d_Lcom_shafer_planetgenerator_PlanetClasses$ = new $TypeData().initClass({
   Lcom_shafer_planetgenerator_PlanetClasses$: 0
@@ -4301,6 +4207,141 @@ function $m_sr_Statics$() {
   return $n_sr_Statics$
 }
 /** @constructor */
+function $c_Lcom_shafer_planetgenerator_BarrenPlanet$() {
+  $c_O.call(this)
+}
+$c_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype = new $h_O();
+$c_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype.constructor = $c_Lcom_shafer_planetgenerator_BarrenPlanet$;
+/** @constructor */
+function $h_Lcom_shafer_planetgenerator_BarrenPlanet$() {
+  /*<skip>*/
+}
+$h_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype = $c_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype;
+$c_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype.generatePlanet__Lcom_shafer_planetgenerator_delaunay_package$Point__Lcom_shafer_planetgenerator_Planet = (function(position) {
+  var radius = (100 + (150 * $uD($g.Math.random())));
+  var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill($m_Lcom_shafer_planetgenerator_PlanetBaseTextured$().random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_Color__I__I__Lcom_shafer_planetgenerator_PlanetBaseTextured(position, radius, $m_Lcom_shafer_planetgenerator_Color$().randomGreyscale__I__I__Lcom_shafer_planetgenerator_Color(150, 200), ((100 + $doubleToInt((250 * $uD($g.Math.random())))) | 0), $doubleToInt((7 + (10 * $uD($g.Math.random()))))));
+  $m_Lcom_shafer_planetgenerator_Atmosphere$();
+  $m_sc_Seq$();
+  $m_sci_Seq$();
+  var this$7 = new $c_scm_ListBuffer().init___();
+  var atmosphere = new $c_Lcom_shafer_planetgenerator_Atmosphere().init___sc_Seq__F0(this$7.toList__sci_List(), ($m_Lcom_shafer_planetgenerator_Atmosphere$(), $m_Lcom_shafer_planetgenerator_Atmosphere$().defaultColor$1));
+  var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
+  return new $c_Lcom_shafer_planetgenerator_Planet().init___Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(position, radius, planetBase, atmosphere, name)
+});
+var $d_Lcom_shafer_planetgenerator_BarrenPlanet$ = new $TypeData().initClass({
+  Lcom_shafer_planetgenerator_BarrenPlanet$: 0
+}, false, "com.shafer.planetgenerator.BarrenPlanet$", {
+  Lcom_shafer_planetgenerator_BarrenPlanet$: 1,
+  O: 1,
+  Lcom_shafer_planetgenerator_GenerativePlanet: 1
+});
+$c_Lcom_shafer_planetgenerator_BarrenPlanet$.prototype.$classData = $d_Lcom_shafer_planetgenerator_BarrenPlanet$;
+var $n_Lcom_shafer_planetgenerator_BarrenPlanet$ = (void 0);
+function $m_Lcom_shafer_planetgenerator_BarrenPlanet$() {
+  if ((!$n_Lcom_shafer_planetgenerator_BarrenPlanet$)) {
+    $n_Lcom_shafer_planetgenerator_BarrenPlanet$ = new $c_Lcom_shafer_planetgenerator_BarrenPlanet$().init___()
+  };
+  return $n_Lcom_shafer_planetgenerator_BarrenPlanet$
+}
+/** @constructor */
+function $c_Lcom_shafer_planetgenerator_FracturedPlanet$() {
+  $c_O.call(this)
+}
+$c_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype = new $h_O();
+$c_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype.constructor = $c_Lcom_shafer_planetgenerator_FracturedPlanet$;
+/** @constructor */
+function $h_Lcom_shafer_planetgenerator_FracturedPlanet$() {
+  /*<skip>*/
+}
+$h_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype = $c_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype;
+$c_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype.generatePlanet__Lcom_shafer_planetgenerator_delaunay_package$Point__Lcom_shafer_planetgenerator_Planet = (function(position) {
+  var radius = (100 + (150 * $uD($g.Math.random())));
+  var jsx$2 = $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$();
+  var jsx$1 = $uD($g.Math.random());
+  var this$3 = $m_Lcom_shafer_planetgenerator_Color$();
+  var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill(jsx$2.random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_Color__I__I__Lcom_shafer_planetgenerator_PlanetBaseTextured(position, (100 + (150 * jsx$1)), this$3.random__D__Lcom_shafer_planetgenerator_Color(1.0), ((60 + $doubleToInt((100 * $uD($g.Math.random())))) | 0), (-1)));
+  var atmosphere = $m_Lcom_shafer_planetgenerator_Atmosphere$().random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere(position, radius, 5, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this) {
+    return (function() {
+      return new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(255, 255, 255, 1.0)
+    })
+  })(this)));
+  var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
+  return new $c_Lcom_shafer_planetgenerator_Planet().init___Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(position, radius, planetBase, atmosphere, name)
+});
+var $d_Lcom_shafer_planetgenerator_FracturedPlanet$ = new $TypeData().initClass({
+  Lcom_shafer_planetgenerator_FracturedPlanet$: 0
+}, false, "com.shafer.planetgenerator.FracturedPlanet$", {
+  Lcom_shafer_planetgenerator_FracturedPlanet$: 1,
+  O: 1,
+  Lcom_shafer_planetgenerator_GenerativePlanet: 1
+});
+$c_Lcom_shafer_planetgenerator_FracturedPlanet$.prototype.$classData = $d_Lcom_shafer_planetgenerator_FracturedPlanet$;
+var $n_Lcom_shafer_planetgenerator_FracturedPlanet$ = (void 0);
+function $m_Lcom_shafer_planetgenerator_FracturedPlanet$() {
+  if ((!$n_Lcom_shafer_planetgenerator_FracturedPlanet$)) {
+    $n_Lcom_shafer_planetgenerator_FracturedPlanet$ = new $c_Lcom_shafer_planetgenerator_FracturedPlanet$().init___()
+  };
+  return $n_Lcom_shafer_planetgenerator_FracturedPlanet$
+}
+/** @constructor */
+function $c_Lcom_shafer_planetgenerator_GasPlanet$() {
+  $c_O.call(this)
+}
+$c_Lcom_shafer_planetgenerator_GasPlanet$.prototype = new $h_O();
+$c_Lcom_shafer_planetgenerator_GasPlanet$.prototype.constructor = $c_Lcom_shafer_planetgenerator_GasPlanet$;
+/** @constructor */
+function $h_Lcom_shafer_planetgenerator_GasPlanet$() {
+  /*<skip>*/
+}
+$h_Lcom_shafer_planetgenerator_GasPlanet$.prototype = $c_Lcom_shafer_planetgenerator_GasPlanet$.prototype;
+$c_Lcom_shafer_planetgenerator_GasPlanet$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_shafer_planetgenerator_GasPlanet$.prototype.generatePlanet__Lcom_shafer_planetgenerator_delaunay_package$Point__Lcom_shafer_planetgenerator_Planet = (function(position) {
+  var radius = (100 + (150 * $uD($g.Math.random())));
+  var this$2 = $m_Lcom_shafer_planetgenerator_Color$();
+  var planetColor = this$2.random__D__Lcom_shafer_planetgenerator_Color(1.0);
+  var this$3 = $m_Lcom_shafer_planetgenerator_Color$();
+  var _2 = this$3.random__D__Lcom_shafer_planetgenerator_Color(1.0);
+  var x0 = ((position.x$1 - radius) + (2 * (radius * $uD($g.Math.random()))));
+  var x1 = ((position.x$1 - radius) + (2 * (radius * $uD($g.Math.random()))));
+  var y0 = ((position.y$1 - radius) - (0.1 * radius));
+  var y1 = ((position.y$1 + radius) + (0.1 * radius));
+  var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill(new $c_Lcom_shafer_planetgenerator_PlanetBaseGradient().init___D__D__D__D__Lcom_shafer_planetgenerator_Color__Lcom_shafer_planetgenerator_Color(x0, y0, x1, y1, planetColor, _2));
+  var atmosphere = $m_Lcom_shafer_planetgenerator_Atmosphere$().random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere(position, radius, 5, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this) {
+    return (function() {
+      var qual$1 = new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(255, 255, 255, 1.0);
+      var x$2 = qual$1.r$1;
+      var x$3 = qual$1.g$1;
+      var x$4 = qual$1.b$1;
+      return new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(x$2, x$3, x$4, 0.3)
+    })
+  })(this)));
+  var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
+  return new $c_Lcom_shafer_planetgenerator_Planet().init___Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(position, radius, planetBase, atmosphere, name)
+});
+var $d_Lcom_shafer_planetgenerator_GasPlanet$ = new $TypeData().initClass({
+  Lcom_shafer_planetgenerator_GasPlanet$: 0
+}, false, "com.shafer.planetgenerator.GasPlanet$", {
+  Lcom_shafer_planetgenerator_GasPlanet$: 1,
+  O: 1,
+  Lcom_shafer_planetgenerator_GenerativePlanet: 1
+});
+$c_Lcom_shafer_planetgenerator_GasPlanet$.prototype.$classData = $d_Lcom_shafer_planetgenerator_GasPlanet$;
+var $n_Lcom_shafer_planetgenerator_GasPlanet$ = (void 0);
+function $m_Lcom_shafer_planetgenerator_GasPlanet$() {
+  if ((!$n_Lcom_shafer_planetgenerator_GasPlanet$)) {
+    $n_Lcom_shafer_planetgenerator_GasPlanet$ = new $c_Lcom_shafer_planetgenerator_GasPlanet$().init___()
+  };
+  return $n_Lcom_shafer_planetgenerator_GasPlanet$
+}
+/** @constructor */
 function $c_Lcom_shafer_planetgenerator_Generator$() {
   $c_O.call(this)
 }
@@ -4314,62 +4355,64 @@ $h_Lcom_shafer_planetgenerator_Generator$.prototype = $c_Lcom_shafer_planetgener
 $c_Lcom_shafer_planetgenerator_Generator$.prototype.init___ = (function() {
   return this
 });
-$c_Lcom_shafer_planetgenerator_Generator$.prototype.initCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__T3 = (function(canvas) {
-  var width = $uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").clientWidth);
-  var height = $uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").clientHeight);
-  canvas.width = $uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").clientWidth);
-  canvas.height = $uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").clientHeight);
-  var context = canvas.getContext("2d");
-  return new $c_T3().init___O__O__O(width, height, context)
+$c_Lcom_shafer_planetgenerator_Generator$.prototype.com$shafer$planetgenerator$Generator$$$anonfun$appendButton$1__Lorg_scalajs_dom_raw_MouseEvent__Lcom_shafer_planetgenerator_Scene__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(event, scene$1, rctx$2) {
+  var newPlanet = $m_Lcom_shafer_planetgenerator_PlanetClasses$().random__Lcom_shafer_planetgenerator_GenerativePlanet().generatePlanet__Lcom_shafer_planetgenerator_delaunay_package$Point__Lcom_shafer_planetgenerator_Planet(new $c_Lcom_shafer_planetgenerator_delaunay_package$Point().init___D__D((scene$1.scaledWidth$1 / 2.0), (scene$1.scaledHeight$1 / 2.0)));
+  var x$2 = scene$1.screenWidth$1;
+  var x$3 = scene$1.screenHeight$1;
+  var x$4 = scene$1.scale$1;
+  var x$5 = scene$1.starfield$1;
+  var x$6 = scene$1.backgroundColor$1;
+  new $c_Lcom_shafer_planetgenerator_Scene().init___D__D__D__Lcom_shafer_planetgenerator_Planet__Lcom_shafer_planetgenerator_Starfield__Lcom_shafer_planetgenerator_Color(x$2, x$3, x$4, newPlanet, x$5, x$6).render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(rctx$2)
 });
-$c_Lcom_shafer_planetgenerator_Generator$.prototype.com$shafer$planetgenerator$Generator$$$anonfun$appendButton$1__Lorg_scalajs_dom_raw_MouseEvent__D__D__Lcom_shafer_planetgenerator_Starfield__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(event, width$1, height$1, starfield$1, rctx$1) {
-  var newPlanet = $as_Lcom_shafer_planetgenerator_Planet($m_Lcom_shafer_planetgenerator_PlanetClasses$().random__F3().apply__O__O__O__O((width$1 / 2), (height$1 / 2), (100 + (150 * $uD($g.Math.random())))));
-  $m_Lcom_shafer_planetgenerator_Generator$().renderCycle__D__Lcom_shafer_planetgenerator_Starfield__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__V(0.0, starfield$1, newPlanet, rctx$1, width$1, height$1)
-});
-$c_Lcom_shafer_planetgenerator_Generator$.prototype.renderCycle__D__Lcom_shafer_planetgenerator_Starfield__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__V = (function(delta, starfield, planet, rctx, width, height) {
-  var time = $uD($g.Date.now());
-  var this$3 = $m_s_Console$();
-  var this$4 = $as_Ljava_io_PrintStream(this$3.outVar$2.v$1);
-  this$4.java$lang$JSConsoleBasedPrintStream$$printString__T__V((delta + "\n"));
-  var this$6 = $m_s_Console$();
-  var this$7 = $as_Ljava_io_PrintStream(this$6.outVar$2.v$1);
-  this$7.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Clearing\n");
-  rctx.clearRect(0.0, 0.0, width, height);
-  starfield.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__V(rctx, 1.0);
-  planet.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(rctx);
-  var x = (("renderCycle took " + ($uD($g.Date.now()) - time)) + "ms");
-  var this$9 = $m_s_Console$();
-  var this$10 = $as_Ljava_io_PrintStream(this$9.outVar$2.v$1);
-  this$10.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"))
+$c_Lcom_shafer_planetgenerator_Generator$.prototype.fillCanvas__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__Lcom_shafer_planetgenerator_Color__V = (function(rctx, width, height, color) {
+  rctx.save();
+  var s = color.toString__T();
+  rctx.fillStyle = s;
+  rctx.fillRect(0.0, 0.0, width, height);
+  rctx.restore()
 });
 $c_Lcom_shafer_planetgenerator_Generator$.prototype.main__V = (function() {
   var canvas = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("canvas");
   $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").appendChild(canvas);
-  var x1 = this.initCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__T3(canvas);
+  var x1 = this.initCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__D__T3(canvas, 4.0);
   if ((x1 === null)) {
     throw new $c_s_MatchError().init___O(x1)
   };
   var width = $uI(x1.$$und1$1);
   var height = $uI(x1.$$und2$1);
   var rctx = x1.$$und3$1;
-  var planet = $as_Lcom_shafer_planetgenerator_Planet($m_Lcom_shafer_planetgenerator_PlanetClasses$().random__F3().apply__O__O__O__O(((width / 2) | 0), ((height / 2) | 0), (100 + (150 * $uD($g.Math.random())))));
-  var starfield = $m_Lcom_shafer_planetgenerator_Starfield$().random__I__D__D__D__Lcom_shafer_planetgenerator_Starfield(100, width, height, 300.0);
-  this.appendButton__Lcom_shafer_planetgenerator_Planet__Lcom_shafer_planetgenerator_Starfield__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__V(planet, starfield, rctx, width, height);
-  this.renderCycle__D__Lcom_shafer_planetgenerator_Starfield__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__V(0.0, starfield, planet, rctx, width, height)
+  var scene = $m_Lcom_shafer_planetgenerator_Scene$().random__D__D__D__Lcom_shafer_planetgenerator_Color__Lcom_shafer_planetgenerator_Scene(width, height, 4.0, new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(20, 20, 20, 1.0));
+  this.appendButton__Lcom_shafer_planetgenerator_Scene__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(scene, rctx);
+  scene.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(rctx)
 });
-$c_Lcom_shafer_planetgenerator_Generator$.prototype.$$js$exported$meth$main__O = (function() {
-  this.main__V()
+$c_Lcom_shafer_planetgenerator_Generator$.prototype.initCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__D__T3 = (function(canvas, scale) {
+  var x = ($uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").clientWidth) * scale);
+  var this$5 = $m_sjsr_RuntimeLong$();
+  var value = $uD($g.Math.round(x));
+  var lo = this$5.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+  var x$1 = ($uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("container").clientHeight) * scale);
+  var this$10 = $m_sjsr_RuntimeLong$();
+  var value$1 = $uD($g.Math.round(x$1));
+  var lo$1 = this$10.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value$1);
+  canvas.setAttribute("style", "max-width: 100%; max-height: 100%;");
+  canvas.width = lo;
+  canvas.height = lo$1;
+  var context = canvas.getContext("2d");
+  return new $c_T3().init___O__O__O(lo, lo$1, context)
 });
-$c_Lcom_shafer_planetgenerator_Generator$.prototype.appendButton__Lcom_shafer_planetgenerator_Planet__Lcom_shafer_planetgenerator_Starfield__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__V = (function(planet, starfield, rctx, width, height) {
+$c_Lcom_shafer_planetgenerator_Generator$.prototype.appendButton__Lcom_shafer_planetgenerator_Scene__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(scene, rctx) {
   var button = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("button");
   button.setAttribute("class", "reload-button");
   button.textContent = "reload";
-  button.onclick = (function(width$1, height$1, starfield$1, rctx$1) {
+  button.onclick = (function(scene$1, rctx$2) {
     return (function(arg1$2) {
-      $m_Lcom_shafer_planetgenerator_Generator$().com$shafer$planetgenerator$Generator$$$anonfun$appendButton$1__Lorg_scalajs_dom_raw_MouseEvent__D__D__Lcom_shafer_planetgenerator_Starfield__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(arg1$2, width$1, height$1, starfield$1, rctx$1)
+      $m_Lcom_shafer_planetgenerator_Generator$().com$shafer$planetgenerator$Generator$$$anonfun$appendButton$1__Lorg_scalajs_dom_raw_MouseEvent__Lcom_shafer_planetgenerator_Scene__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(arg1$2, scene$1, rctx$2)
     })
-  })(width, height, starfield, rctx);
+  })(scene, rctx);
   $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().body.appendChild(button)
+});
+$c_Lcom_shafer_planetgenerator_Generator$.prototype.$$js$exported$meth$main__O = (function() {
+  this.main__V()
 });
 $c_Lcom_shafer_planetgenerator_Generator$.prototype.main = (function() {
   return this.$$js$exported$meth$main__O()
@@ -4388,6 +4431,58 @@ function $m_Lcom_shafer_planetgenerator_Generator$() {
     $n_Lcom_shafer_planetgenerator_Generator$ = new $c_Lcom_shafer_planetgenerator_Generator$().init___()
   };
   return $n_Lcom_shafer_planetgenerator_Generator$
+}
+/** @constructor */
+function $c_Lcom_shafer_planetgenerator_IrradiatedPlanet$() {
+  $c_O.call(this)
+}
+$c_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype = new $h_O();
+$c_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype.constructor = $c_Lcom_shafer_planetgenerator_IrradiatedPlanet$;
+/** @constructor */
+function $h_Lcom_shafer_planetgenerator_IrradiatedPlanet$() {
+  /*<skip>*/
+}
+$h_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype = $c_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype;
+$c_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype.generatePlanet__Lcom_shafer_planetgenerator_delaunay_package$Point__Lcom_shafer_planetgenerator_Planet = (function(position) {
+  var radius = (100 + (150 * $uD($g.Math.random())));
+  var this$2 = $m_Lcom_shafer_planetgenerator_Color$();
+  var planetColor = this$2.random__D__Lcom_shafer_planetgenerator_Color(1.0);
+  var this$3 = $m_Lcom_shafer_planetgenerator_Color$();
+  var _2 = this$3.random__D__Lcom_shafer_planetgenerator_Color(1.0);
+  var x0 = ((position.x$1 - radius) + (2 * (radius * $uD($g.Math.random()))));
+  var x1 = ((position.x$1 - radius) + (2 * (radius * $uD($g.Math.random()))));
+  var y0 = ((position.y$1 - radius) - (0.1 * radius));
+  var y1 = ((position.y$1 + radius) + (0.1 * radius));
+  var planetBase = new $c_Lcom_shafer_planetgenerator_PlanetBase().init___Lcom_shafer_planetgenerator_PlanetBaseFill(new $c_Lcom_shafer_planetgenerator_PlanetBaseGradient().init___D__D__D__D__Lcom_shafer_planetgenerator_Color__Lcom_shafer_planetgenerator_Color(x0, y0, x1, y1, planetColor, _2));
+  var atmosphere = $m_Lcom_shafer_planetgenerator_Atmosphere$().random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere(position, radius, 25, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this, planetColor$1) {
+    return (function() {
+      var qual$1 = planetColor$1.inverted__Lcom_shafer_planetgenerator_Color();
+      var x$2 = qual$1.r$1;
+      var x$3 = qual$1.g$1;
+      var x$4 = qual$1.b$1;
+      return new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(x$2, x$3, x$4, 0.5)
+    })
+  })(this, planetColor)));
+  var name = $m_Lcom_shafer_planetgenerator_NameGenerator$().generate__T();
+  return new $c_Lcom_shafer_planetgenerator_Planet().init___Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T(position, radius, planetBase, atmosphere, name)
+});
+var $d_Lcom_shafer_planetgenerator_IrradiatedPlanet$ = new $TypeData().initClass({
+  Lcom_shafer_planetgenerator_IrradiatedPlanet$: 0
+}, false, "com.shafer.planetgenerator.IrradiatedPlanet$", {
+  Lcom_shafer_planetgenerator_IrradiatedPlanet$: 1,
+  O: 1,
+  Lcom_shafer_planetgenerator_GenerativePlanet: 1
+});
+$c_Lcom_shafer_planetgenerator_IrradiatedPlanet$.prototype.$classData = $d_Lcom_shafer_planetgenerator_IrradiatedPlanet$;
+var $n_Lcom_shafer_planetgenerator_IrradiatedPlanet$ = (void 0);
+function $m_Lcom_shafer_planetgenerator_IrradiatedPlanet$() {
+  if ((!$n_Lcom_shafer_planetgenerator_IrradiatedPlanet$)) {
+    $n_Lcom_shafer_planetgenerator_IrradiatedPlanet$ = new $c_Lcom_shafer_planetgenerator_IrradiatedPlanet$().init___()
+  };
+  return $n_Lcom_shafer_planetgenerator_IrradiatedPlanet$
 }
 /** @constructor */
 function $c_jl_Number() {
@@ -4886,20 +4981,6 @@ $c_sr_AbstractFunction2.prototype.toString__T = (function() {
   return "<function2>"
 });
 /** @constructor */
-function $c_sr_AbstractFunction3() {
-  $c_O.call(this)
-}
-$c_sr_AbstractFunction3.prototype = new $h_O();
-$c_sr_AbstractFunction3.prototype.constructor = $c_sr_AbstractFunction3;
-/** @constructor */
-function $h_sr_AbstractFunction3() {
-  /*<skip>*/
-}
-$h_sr_AbstractFunction3.prototype = $c_sr_AbstractFunction3.prototype;
-$c_sr_AbstractFunction3.prototype.toString__T = (function() {
-  return "<function3>"
-});
-/** @constructor */
 function $c_sr_BooleanRef() {
   $c_O.call(this);
   this.elem$1 = false
@@ -5031,7 +5112,7 @@ $c_Lcom_shafer_planetgenerator_Atmosphere$.prototype.init___ = (function() {
   this.numberOfVectors$1 = 30;
   return this
 });
-$c_Lcom_shafer_planetgenerator_Atmosphere$.prototype.random__D__D__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere = (function(planetX, planetY, planetR, cloudsNumber, cloudColor) {
+$c_Lcom_shafer_planetgenerator_Atmosphere$.prototype.random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__I__F0__Lcom_shafer_planetgenerator_Atmosphere = (function(planetPosition, planetR, cloudsNumber, cloudColor) {
   var isEmpty$4 = (cloudsNumber < 0);
   var isEmpty$4$1 = (cloudsNumber < 0);
   if (isEmpty$4$1) {
@@ -5059,7 +5140,7 @@ $c_Lcom_shafer_planetgenerator_Atmosphere$.prototype.random__D__D__D__I__F0__Lco
     var i = 0;
     while (true) {
       var arg1 = i;
-      var elem = $m_Lcom_shafer_planetgenerator_Atmosphere$().randomCloud__p1__D__D__D__Lcom_shafer_planetgenerator_Cloud(planetX, planetY, planetR);
+      var elem = $m_Lcom_shafer_planetgenerator_Atmosphere$().randomCloud__p1__D__D__D__Lcom_shafer_planetgenerator_Cloud(planetPosition.x$1, planetPosition.y$1, planetR);
       b.$$plus$eq__O__sci_VectorBuilder(elem);
       if ((i === cloudsNumber)) {
         break
@@ -5297,6 +5378,21 @@ $c_Lcom_shafer_planetgenerator_PlanetBaseTextured$.prototype.randomCraters__p1__
   };
   return $as_sci_IndexedSeq(b$1.result__O())
 });
+$c_Lcom_shafer_planetgenerator_PlanetBaseTextured$.prototype.random__Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_Color__I__I__Lcom_shafer_planetgenerator_PlanetBaseTextured = (function(planetPosition, radius, color, roughness, numberOfCraters) {
+  var time = $uD($g.Date.now());
+  var res = $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$().randomCraters__p1__I__D__D__D__sci_IndexedSeq(numberOfCraters, planetPosition.x$1, planetPosition.y$1, radius);
+  var x = (("genCraters took " + ($uD($g.Date.now()) - time)) + "ms");
+  var this$3 = $m_s_Console$();
+  var this$4 = $as_Ljava_io_PrintStream(this$3.outVar$2.v$1);
+  this$4.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"));
+  var time$1 = $uD($g.Date.now());
+  var res$1 = $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$().randomTexture__p1__I__D__D__D__Lcom_shafer_planetgenerator_Triangles(roughness, planetPosition.x$1, planetPosition.y$1, radius);
+  var x$1 = (("Gen texture took " + ($uD($g.Date.now()) - time$1)) + "ms");
+  var this$7 = $m_s_Console$();
+  var this$8 = $as_Ljava_io_PrintStream(this$7.outVar$2.v$1);
+  this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"));
+  return new $c_Lcom_shafer_planetgenerator_PlanetBaseTextured().init___sc_Seq__Lcom_shafer_planetgenerator_Triangles__Lcom_shafer_planetgenerator_Color(res, res$1, color)
+});
 $c_Lcom_shafer_planetgenerator_PlanetBaseTextured$.prototype.randomTexture__p1__I__D__D__D__Lcom_shafer_planetgenerator_Triangles = (function(roughness, planetX, planetY, planetR) {
   var isEmpty$4 = (roughness < 0);
   var isEmpty$4$1 = (roughness < 0);
@@ -5342,32 +5438,17 @@ $c_Lcom_shafer_planetgenerator_PlanetBaseTextured$.prototype.randomTexture__p1__
   var this$13 = this$12.iterator__sci_VectorIterator();
   while (this$13.$$undhasNext$2) {
     var arg1$1 = this$13.next__O();
-    var x$5 = $as_T3(arg1$1);
-    if ((x$5 === null)) {
-      throw new $c_s_MatchError().init___O(x$5)
+    var x$6 = $as_T3(arg1$1);
+    if ((x$6 === null)) {
+      throw new $c_s_MatchError().init___O(x$6)
     };
-    var x$1 = $uD(x$5.$$und2$1);
-    var y$1 = $uD(x$5.$$und3$1);
+    var x$1 = $uD(x$6.$$und2$1);
+    var y$1 = $uD(x$6.$$und3$1);
     b$1.$$plus$eq__O__scm_Builder(new $c_Lcom_shafer_planetgenerator_delaunay_package$Point().init___D__D(x$1, y$1))
   };
   var surfaceTexture = $as_sci_IndexedSeq(b$1.result__O());
   var triangles = $m_Lcom_shafer_planetgenerator_delaunay_Delaunay$().triangulate__sci_List__sc_Seq(surfaceTexture.toList__sci_List());
   return new $c_Lcom_shafer_planetgenerator_Triangles().init___sc_Seq(triangles)
-});
-$c_Lcom_shafer_planetgenerator_PlanetBaseTextured$.prototype.random__D__D__D__Lcom_shafer_planetgenerator_Color__I__I__Lcom_shafer_planetgenerator_PlanetBaseTextured = (function(x, y, radius, color, roughness, numberOfCraters) {
-  var time = $uD($g.Date.now());
-  var res = $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$().randomCraters__p1__I__D__D__D__sci_IndexedSeq(numberOfCraters, x, y, radius);
-  var x$1 = (("genCraters took " + ($uD($g.Date.now()) - time)) + "ms");
-  var this$3 = $m_s_Console$();
-  var this$4 = $as_Ljava_io_PrintStream(this$3.outVar$2.v$1);
-  this$4.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"));
-  var time$1 = $uD($g.Date.now());
-  var res$1 = $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$().randomTexture__p1__I__D__D__D__Lcom_shafer_planetgenerator_Triangles(roughness, x, y, radius);
-  var x$2 = (("Gen texture took " + ($uD($g.Date.now()) - time$1)) + "ms");
-  var this$7 = $m_s_Console$();
-  var this$8 = $as_Ljava_io_PrintStream(this$7.outVar$2.v$1);
-  this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$2 + "\n"));
-  return new $c_Lcom_shafer_planetgenerator_PlanetBaseTextured().init___sc_Seq__Lcom_shafer_planetgenerator_Triangles__Lcom_shafer_planetgenerator_Color(res, res$1, color)
 });
 var $d_Lcom_shafer_planetgenerator_PlanetBaseTextured$ = new $TypeData().initClass({
   Lcom_shafer_planetgenerator_PlanetBaseTextured$: 0
@@ -5384,6 +5465,43 @@ function $m_Lcom_shafer_planetgenerator_PlanetBaseTextured$() {
     $n_Lcom_shafer_planetgenerator_PlanetBaseTextured$ = new $c_Lcom_shafer_planetgenerator_PlanetBaseTextured$().init___()
   };
   return $n_Lcom_shafer_planetgenerator_PlanetBaseTextured$
+}
+/** @constructor */
+function $c_Lcom_shafer_planetgenerator_Scene$() {
+  $c_O.call(this)
+}
+$c_Lcom_shafer_planetgenerator_Scene$.prototype = new $h_O();
+$c_Lcom_shafer_planetgenerator_Scene$.prototype.constructor = $c_Lcom_shafer_planetgenerator_Scene$;
+/** @constructor */
+function $h_Lcom_shafer_planetgenerator_Scene$() {
+  /*<skip>*/
+}
+$h_Lcom_shafer_planetgenerator_Scene$.prototype = $c_Lcom_shafer_planetgenerator_Scene$.prototype;
+$c_Lcom_shafer_planetgenerator_Scene$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_shafer_planetgenerator_Scene$.prototype.random__D__D__D__Lcom_shafer_planetgenerator_Color__Lcom_shafer_planetgenerator_Scene = (function(screenWidth, screenHeight, scale, backgroundColor) {
+  var scaledWidth = (screenWidth / scale);
+  var scaledHeight = (screenHeight / scale);
+  var planet = $m_Lcom_shafer_planetgenerator_PlanetClasses$().random__Lcom_shafer_planetgenerator_GenerativePlanet().generatePlanet__Lcom_shafer_planetgenerator_delaunay_package$Point__Lcom_shafer_planetgenerator_Planet(new $c_Lcom_shafer_planetgenerator_delaunay_package$Point().init___D__D((scaledWidth / 2.0), (scaledHeight / 2.0)));
+  var starfield = $m_Lcom_shafer_planetgenerator_Starfield$().random__I__D__D__D__Lcom_shafer_planetgenerator_Starfield(100, scaledWidth, scaledHeight, 300.0);
+  return new $c_Lcom_shafer_planetgenerator_Scene().init___D__D__D__Lcom_shafer_planetgenerator_Planet__Lcom_shafer_planetgenerator_Starfield__Lcom_shafer_planetgenerator_Color(screenWidth, screenHeight, scale, planet, starfield, backgroundColor)
+});
+var $d_Lcom_shafer_planetgenerator_Scene$ = new $TypeData().initClass({
+  Lcom_shafer_planetgenerator_Scene$: 0
+}, false, "com.shafer.planetgenerator.Scene$", {
+  Lcom_shafer_planetgenerator_Scene$: 1,
+  O: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_shafer_planetgenerator_Scene$.prototype.$classData = $d_Lcom_shafer_planetgenerator_Scene$;
+var $n_Lcom_shafer_planetgenerator_Scene$ = (void 0);
+function $m_Lcom_shafer_planetgenerator_Scene$() {
+  if ((!$n_Lcom_shafer_planetgenerator_Scene$)) {
+    $n_Lcom_shafer_planetgenerator_Scene$ = new $c_Lcom_shafer_planetgenerator_Scene$().init___()
+  };
+  return $n_Lcom_shafer_planetgenerator_Scene$
 }
 /** @constructor */
 function $c_Lcom_shafer_planetgenerator_Star$() {
@@ -6338,34 +6456,6 @@ var $d_sjsr_AnonFunction2 = new $TypeData().initClass({
   F2: 1
 });
 $c_sjsr_AnonFunction2.prototype.$classData = $d_sjsr_AnonFunction2;
-/** @constructor */
-function $c_sjsr_AnonFunction3() {
-  $c_sr_AbstractFunction3.call(this);
-  this.f$2 = null
-}
-$c_sjsr_AnonFunction3.prototype = new $h_sr_AbstractFunction3();
-$c_sjsr_AnonFunction3.prototype.constructor = $c_sjsr_AnonFunction3;
-/** @constructor */
-function $h_sjsr_AnonFunction3() {
-  /*<skip>*/
-}
-$h_sjsr_AnonFunction3.prototype = $c_sjsr_AnonFunction3.prototype;
-$c_sjsr_AnonFunction3.prototype.init___sjs_js_Function3 = (function(f) {
-  this.f$2 = f;
-  return this
-});
-$c_sjsr_AnonFunction3.prototype.apply__O__O__O__O = (function(arg1, arg2, arg3) {
-  return (0, this.f$2)(arg1, arg2, arg3)
-});
-var $d_sjsr_AnonFunction3 = new $TypeData().initClass({
-  sjsr_AnonFunction3: 0
-}, false, "scala.scalajs.runtime.AnonFunction3", {
-  sjsr_AnonFunction3: 1,
-  sr_AbstractFunction3: 1,
-  O: 1,
-  F3: 1
-});
-$c_sjsr_AnonFunction3.prototype.$classData = $d_sjsr_AnonFunction3;
 /** @constructor */
 function $c_sjsr_RuntimeLong$() {
   $c_O.call(this);
@@ -7679,21 +7769,21 @@ $c_Lcom_shafer_planetgenerator_Crater.prototype.render__Lcom_shafer_planetgenera
     canvas.moveTo(this.xpos$1, this.ypos$1);
     var x1 = new $c_T2().init___O__O(this.points$1.head__O(), this.points$1.tail__O());
     matchEnd5: {
-      var x$6_$_$$und1$f;
-      var x$6_$_$$und2$f;
+      var x$7_$_$$und1$f;
+      var x$7_$_$$und2$f;
       var first = $as_Lcom_shafer_planetgenerator_delaunay_package$Point(x1.$$und1$f);
       var tail = $as_sc_Seq(x1.$$und2$f);
       if ((first !== null)) {
         if ((tail !== null)) {
-          var x$6_$_$$und1$f = first;
-          var x$6_$_$$und2$f = tail;
+          var x$7_$_$$und1$f = first;
+          var x$7_$_$$und2$f = tail;
           break matchEnd5
         }
       };
       throw new $c_s_MatchError().init___O(x1)
     };
-    var first$2 = $as_Lcom_shafer_planetgenerator_delaunay_package$Point(x$6_$_$$und1$f);
-    var tail$2 = $as_sc_Seq(x$6_$_$$und2$f);
+    var first$2 = $as_Lcom_shafer_planetgenerator_delaunay_package$Point(x$7_$_$$und1$f);
+    var tail$2 = $as_sc_Seq(x$7_$_$$und2$f);
     canvas.moveTo(first$2.x$1, first$2.y$1);
     var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, canvas$1) {
       return (function(edgePoint$2) {
@@ -7748,8 +7838,7 @@ $c_Lcom_shafer_planetgenerator_Crater.prototype.$classData = $d_Lcom_shafer_plan
 /** @constructor */
 function $c_Lcom_shafer_planetgenerator_Planet() {
   $c_O.call(this);
-  this.x$1 = 0.0;
-  this.y$1 = 0.0;
+  this.position$1 = null;
   this.radius$1 = 0.0;
   this.planetBase$1 = null;
   this.atmosphere$1 = null;
@@ -7768,24 +7857,26 @@ $c_Lcom_shafer_planetgenerator_Planet.prototype.productPrefix__T = (function() {
   return "Planet"
 });
 $c_Lcom_shafer_planetgenerator_Planet.prototype.productArity__I = (function() {
-  return 6
+  return 5
 });
 $c_Lcom_shafer_planetgenerator_Planet.prototype.equals__O__Z = (function(x$1) {
   if ((this === x$1)) {
     return true
   } else if ((x$1 instanceof $c_Lcom_shafer_planetgenerator_Planet)) {
     var Planet$1 = $as_Lcom_shafer_planetgenerator_Planet(x$1);
-    if ((((this.x$1 === Planet$1.x$1) && (this.y$1 === Planet$1.y$1)) && (this.radius$1 === Planet$1.radius$1))) {
-      var x = this.planetBase$1;
-      var x$2 = Planet$1.planetBase$1;
-      var jsx$2 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    var x = this.position$1;
+    var x$2 = Planet$1.position$1;
+    if ((((x === null) ? (x$2 === null) : x.equals__O__Z(x$2)) && (this.radius$1 === Planet$1.radius$1))) {
+      var x$3 = this.planetBase$1;
+      var x$4 = Planet$1.planetBase$1;
+      var jsx$2 = ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
     } else {
       var jsx$2 = false
     };
     if (jsx$2) {
-      var x$3 = this.atmosphere$1;
-      var x$4 = Planet$1.atmosphere$1;
-      var jsx$1 = ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
+      var x$5 = this.atmosphere$1;
+      var x$6 = Planet$1.atmosphere$1;
+      var jsx$1 = ((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6))
     } else {
       var jsx$1 = false
     };
@@ -7801,26 +7892,22 @@ $c_Lcom_shafer_planetgenerator_Planet.prototype.equals__O__Z = (function(x$1) {
 $c_Lcom_shafer_planetgenerator_Planet.prototype.productElement__I__O = (function(x$1) {
   switch (x$1) {
     case 0: {
-      return this.x$1;
+      return this.position$1;
       break
     }
     case 1: {
-      return this.y$1;
-      break
-    }
-    case 2: {
       return this.radius$1;
       break
     }
-    case 3: {
+    case 2: {
       return this.planetBase$1;
       break
     }
-    case 4: {
+    case 3: {
       return this.atmosphere$1;
       break
     }
-    case 5: {
+    case 4: {
       return this.name$1;
       break
     }
@@ -7828,17 +7915,6 @@ $c_Lcom_shafer_planetgenerator_Planet.prototype.productElement__I__O = (function
       throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
     }
   }
-});
-$c_Lcom_shafer_planetgenerator_Planet.prototype.init___D__D__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T = (function(x, y, radius, planetBase, atmosphere, name) {
-  this.x$1 = x;
-  this.y$1 = y;
-  this.radius$1 = radius;
-  this.planetBase$1 = planetBase;
-  this.atmosphere$1 = atmosphere;
-  this.name$1 = name;
-  this.namePadding$1 = 20;
-  this.backgroundColor$1 = new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(27, 27, 27, 1.0);
-  return this
 });
 $c_Lcom_shafer_planetgenerator_Planet.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
@@ -7849,7 +7925,7 @@ $c_Lcom_shafer_planetgenerator_Planet.prototype.renderAliasOverlayFix__Lorg_scal
   var s = this$1.toString__T();
   ctx.strokeStyle = s;
   ctx.beginPath();
-  ctx.arc(this.x$1, this.y$1, ((-0.5) + this.radius$1), 0.0, 6.283185307179586, false);
+  ctx.arc(this.position$1.x$1, this.position$1.y$1, ((-0.5) + this.radius$1), 0.0, 6.283185307179586, false);
   ctx.lineWidth = 3.0;
   ctx.stroke();
   ctx.closePath();
@@ -7857,30 +7933,27 @@ $c_Lcom_shafer_planetgenerator_Planet.prototype.renderAliasOverlayFix__Lorg_scal
 });
 $c_Lcom_shafer_planetgenerator_Planet.prototype.hashCode__I = (function() {
   var acc = (-889275714);
-  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.x$1));
-  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.y$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.position$1));
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.radius$1));
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.planetBase$1));
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.atmosphere$1));
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.name$1));
-  return $m_sr_Statics$().finalizeHash__I__I__I(acc, 6)
+  return $m_sr_Statics$().finalizeHash__I__I__I(acc, 5)
 });
 $c_Lcom_shafer_planetgenerator_Planet.prototype.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(ctx) {
   ctx.save();
   var time = $uD($g.Date.now());
-  var this$2 = this.planetBase$1;
-  this$2.fill$1.render__D__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(this.x$1, this.y$1, this.radius$1, ctx);
+  this.planetBase$1.render__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(this, ctx);
   var x = (("planetBase took " + ($uD($g.Date.now()) - time)) + "ms");
-  var this$4 = $m_s_Console$();
-  var this$5 = $as_Ljava_io_PrintStream(this$4.outVar$2.v$1);
-  this$5.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"));
+  var this$3 = $m_s_Console$();
+  var this$4 = $as_Ljava_io_PrintStream(this$3.outVar$2.v$1);
+  this$4.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"));
   var time$1 = $uD($g.Date.now());
-  var this$7 = this.atmosphere$1;
-  this$7.drawClouds__D__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(this.x$1, this.y$1, this.radius$1, ctx);
+  this.atmosphere$1.render__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(this, ctx);
   var x$1 = (("atmosphere took " + ($uD($g.Date.now()) - time$1)) + "ms");
-  var this$9 = $m_s_Console$();
-  var this$10 = $as_Ljava_io_PrintStream(this$9.outVar$2.v$1);
-  this$10.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"));
+  var this$7 = $m_s_Console$();
+  var this$8 = $as_Ljava_io_PrintStream(this$7.outVar$2.v$1);
+  this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"));
   ctx.restore();
   this.renderAliasOverlayFix__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(ctx);
   this.renderName__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(ctx)
@@ -7895,8 +7968,18 @@ $c_Lcom_shafer_planetgenerator_Planet.prototype.renderName__Lorg_scalajs_dom_raw
   var this$1 = new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(200, 200, 200, 1.0);
   var s = this$1.toString__T();
   ctx.fillStyle = s;
-  ctx.fillText(this.name$1, this.x$1, (20.0 + ((this.y$1 + this.radius$1) + this.namePadding$1)));
+  ctx.fillText(this.name$1, this.position$1.x$1, (20.0 + ((this.position$1.y$1 + this.radius$1) + this.namePadding$1)));
   ctx.restore()
+});
+$c_Lcom_shafer_planetgenerator_Planet.prototype.init___Lcom_shafer_planetgenerator_delaunay_package$Point__D__Lcom_shafer_planetgenerator_PlanetBase__Lcom_shafer_planetgenerator_Atmosphere__T = (function(position, radius, planetBase, atmosphere, name) {
+  this.position$1 = position;
+  this.radius$1 = radius;
+  this.planetBase$1 = planetBase;
+  this.atmosphere$1 = atmosphere;
+  this.name$1 = name;
+  this.namePadding$1 = 20;
+  this.backgroundColor$1 = new $c_Lcom_shafer_planetgenerator_Color().init___I__I__I__D(27, 27, 27, 1.0);
+  return this
 });
 function $as_Lcom_shafer_planetgenerator_Planet(obj) {
   return (((obj instanceof $c_Lcom_shafer_planetgenerator_Planet) || (obj === null)) ? obj : $throwClassCastException(obj, "com.shafer.planetgenerator.Planet"))
@@ -7918,6 +8001,155 @@ var $d_Lcom_shafer_planetgenerator_Planet = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lcom_shafer_planetgenerator_Planet.prototype.$classData = $d_Lcom_shafer_planetgenerator_Planet;
+/** @constructor */
+function $c_Lcom_shafer_planetgenerator_Scene() {
+  $c_O.call(this);
+  this.screenWidth$1 = 0.0;
+  this.screenHeight$1 = 0.0;
+  this.scale$1 = 0.0;
+  this.planet$1 = null;
+  this.starfield$1 = null;
+  this.backgroundColor$1 = null;
+  this.scaledWidth$1 = 0.0;
+  this.scaledHeight$1 = 0.0
+}
+$c_Lcom_shafer_planetgenerator_Scene.prototype = new $h_O();
+$c_Lcom_shafer_planetgenerator_Scene.prototype.constructor = $c_Lcom_shafer_planetgenerator_Scene;
+/** @constructor */
+function $h_Lcom_shafer_planetgenerator_Scene() {
+  /*<skip>*/
+}
+$h_Lcom_shafer_planetgenerator_Scene.prototype = $c_Lcom_shafer_planetgenerator_Scene.prototype;
+$c_Lcom_shafer_planetgenerator_Scene.prototype.productPrefix__T = (function() {
+  return "Scene"
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.productArity__I = (function() {
+  return 6
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.equals__O__Z = (function(x$1) {
+  if ((this === x$1)) {
+    return true
+  } else if ((x$1 instanceof $c_Lcom_shafer_planetgenerator_Scene)) {
+    var Scene$1 = $as_Lcom_shafer_planetgenerator_Scene(x$1);
+    if ((((this.screenWidth$1 === Scene$1.screenWidth$1) && (this.screenHeight$1 === Scene$1.screenHeight$1)) && (this.scale$1 === Scene$1.scale$1))) {
+      var x = this.planet$1;
+      var x$2 = Scene$1.planet$1;
+      var jsx$2 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+    } else {
+      var jsx$2 = false
+    };
+    if (jsx$2) {
+      var x$3 = this.starfield$1;
+      var x$4 = Scene$1.starfield$1;
+      var jsx$1 = ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
+    } else {
+      var jsx$1 = false
+    };
+    if (jsx$1) {
+      var x$5 = this.backgroundColor$1;
+      var x$6 = Scene$1.backgroundColor$1;
+      return ((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6))
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.productElement__I__O = (function(x$1) {
+  switch (x$1) {
+    case 0: {
+      return this.screenWidth$1;
+      break
+    }
+    case 1: {
+      return this.screenHeight$1;
+      break
+    }
+    case 2: {
+      return this.scale$1;
+      break
+    }
+    case 3: {
+      return this.planet$1;
+      break
+    }
+    case 4: {
+      return this.starfield$1;
+      break
+    }
+    case 5: {
+      return this.backgroundColor$1;
+      break
+    }
+    default: {
+      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
+    }
+  }
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.init___D__D__D__Lcom_shafer_planetgenerator_Planet__Lcom_shafer_planetgenerator_Starfield__Lcom_shafer_planetgenerator_Color = (function(screenWidth, screenHeight, scale, planet, starfield, backgroundColor) {
+  this.screenWidth$1 = screenWidth;
+  this.screenHeight$1 = screenHeight;
+  this.scale$1 = scale;
+  this.planet$1 = planet;
+  this.starfield$1 = starfield;
+  this.backgroundColor$1 = backgroundColor;
+  this.scaledWidth$1 = (screenWidth / scale);
+  this.scaledHeight$1 = (screenHeight / scale);
+  return this
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.hashCode__I = (function() {
+  var acc = (-889275714);
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.screenWidth$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.screenHeight$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.scale$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.planet$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.starfield$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.backgroundColor$1));
+  return $m_sr_Statics$().finalizeHash__I__I__I(acc, 6)
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(rctx) {
+  rctx.save();
+  rctx.scale(this.scale$1, this.scale$1);
+  var time = $uD($g.Date.now());
+  var this$4 = $m_s_Console$();
+  var this$5 = $as_Ljava_io_PrintStream(this$4.outVar$2.v$1);
+  this$5.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Clearing\n");
+  $m_Lcom_shafer_planetgenerator_Generator$().fillCanvas__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__D__Lcom_shafer_planetgenerator_Color__V(rctx, this.scaledWidth$1, this.scaledHeight$1, this.backgroundColor$1);
+  this.starfield$1.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__D__V(rctx, 1.0);
+  this.planet$1.render__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(rctx);
+  var x = (("renderCycle took " + ($uD($g.Date.now()) - time)) + "ms");
+  var this$7 = $m_s_Console$();
+  var this$8 = $as_Ljava_io_PrintStream(this$7.outVar$2.v$1);
+  this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"));
+  rctx.restore()
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
+function $as_Lcom_shafer_planetgenerator_Scene(obj) {
+  return (((obj instanceof $c_Lcom_shafer_planetgenerator_Scene) || (obj === null)) ? obj : $throwClassCastException(obj, "com.shafer.planetgenerator.Scene"))
+}
+function $isArrayOf_Lcom_shafer_planetgenerator_Scene(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_shafer_planetgenerator_Scene)))
+}
+function $asArrayOf_Lcom_shafer_planetgenerator_Scene(obj, depth) {
+  return (($isArrayOf_Lcom_shafer_planetgenerator_Scene(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.shafer.planetgenerator.Scene;", depth))
+}
+var $d_Lcom_shafer_planetgenerator_Scene = new $TypeData().initClass({
+  Lcom_shafer_planetgenerator_Scene: 0
+}, false, "com.shafer.planetgenerator.Scene", {
+  Lcom_shafer_planetgenerator_Scene: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_shafer_planetgenerator_Scene.prototype.$classData = $d_Lcom_shafer_planetgenerator_Scene;
 /** @constructor */
 function $c_Lcom_shafer_planetgenerator_Star() {
   $c_O.call(this);
@@ -9769,6 +10001,9 @@ $c_Lcom_shafer_planetgenerator_Atmosphere.prototype.drawClouds__D__D__D__Lorg_sc
   canvas.closePath();
   canvas.restore()
 });
+$c_Lcom_shafer_planetgenerator_Atmosphere.prototype.render__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(planet, canvas) {
+  this.drawClouds__D__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(planet.position$1.x$1, planet.position$1.y$1, planet.radius$1, canvas)
+});
 $c_Lcom_shafer_planetgenerator_Atmosphere.prototype.productArity__I = (function() {
   return 2
 });
@@ -9858,6 +10093,9 @@ $c_Lcom_shafer_planetgenerator_PlanetBase.prototype.productPrefix__T = (function
 });
 $c_Lcom_shafer_planetgenerator_PlanetBase.prototype.productArity__I = (function() {
   return 1
+});
+$c_Lcom_shafer_planetgenerator_PlanetBase.prototype.render__Lcom_shafer_planetgenerator_Planet__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(planet, canvas) {
+  this.fill$1.render__D__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(planet.position$1.x$1, planet.position$1.y$1, planet.radius$1, canvas)
 });
 $c_Lcom_shafer_planetgenerator_PlanetBase.prototype.equals__O__Z = (function(x$1) {
   if ((this === x$1)) {
