@@ -6,14 +6,16 @@ import scala.scalajs.js.Date
 import Util._
 import com.shafer.planetgenerator.delaunay.Point
 
-case class Planet(position: Point,
-                  radius: Double,
-                  planetBase: PlanetBase,
-                  atmosphere: Atmosphere,
-                  name: String) {
+case class Planet(
+  position: Point,
+  radius: Double,
+  planetBase: PlanetBase,
+  atmosphere: Atmosphere,
+  name: String,
+) {
 
   val namePadding     = 20
-  val backgroundColor = Color(27, 27, 27)
+  val backgroundColor = Color(20, 20, 20)
 
   def render(ctx: CanvasRenderingContext2D) = {
     ctx.save()

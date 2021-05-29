@@ -89,9 +89,9 @@ object Delaunay {
     val diameter = (maxPoint.x - minPoint.x).max(maxPoint.y - minPoint.y)
 
     List(
-      Point(midpoint.x - 2*diameter, midpoint.y - 1*diameter),
-      Point(midpoint.x - 0*diameter, midpoint.y + 2*diameter),
-      Point(midpoint.x + 2*diameter, midpoint.y - 1*diameter)
+      Point(midpoint.x - 2 * diameter, midpoint.y - 1 * diameter),
+      Point(midpoint.x - 0 * diameter, midpoint.y + 2 * diameter),
+      Point(midpoint.x + 2 * diameter, midpoint.y - 1 * diameter)
     )
   }
   

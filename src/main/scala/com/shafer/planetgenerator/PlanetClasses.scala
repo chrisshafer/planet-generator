@@ -59,7 +59,7 @@ object FracturedPlanet extends GenerativePlanet {
     val radius = Math.random() * 150 + 100
     Planet(
       planetBase = PlanetBase(
-        PlanetBaseTextured.random(position, radius = Math.random() * 150 + 100,
+        PlanetBaseTextured.random(position, radius = radius,
           Color.random,
           roughness = (Math.random() * 100).toInt + 60,
           numberOfCraters = -1

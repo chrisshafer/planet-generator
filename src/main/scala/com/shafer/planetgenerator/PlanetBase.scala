@@ -21,7 +21,6 @@ case class PlanetBaseGradient(x0: Double, y0: Double, x1: Double, y1: Double, co
       canvas.fillStyle = gradient
       canvas.fill()
       canvas.clip()
-
     }
   }
 }
@@ -57,7 +56,6 @@ object PlanetBaseTextured {
   val minCraterSize = 10
   val craterEdgeRoughness = .70
   val craterResolution = 25
-
 
   def random(
     planetPosition: Point,
@@ -95,8 +93,8 @@ object PlanetBaseTextured {
   private def randomTexture(roughness: Int, planetX: Double, planetY: Double, planetR: Double) = {
     val surfaceTexture = for{
       _           <- 0 to roughness by 1
-      x           = Math.random() * planetR * 2 + planetX - planetR
-      y           = Math.random() * planetR * 2 + planetY - planetR
+      x           = Math.random() * planetR * 2 + (planetX - planetR)
+      y           = Math.random() * planetR * 2 + (planetY - planetR)
     } yield {
       Point(x,y)
     }

@@ -50,8 +50,6 @@ object Scene {
   }
 }
 
-
-
 object Generator extends JSApp {
 
   def fillCanvas(rctx: CanvasRenderingContext2D, width: Double, height: Double, color: Color) = {
