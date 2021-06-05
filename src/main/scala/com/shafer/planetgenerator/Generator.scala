@@ -3,13 +3,11 @@ package com.shafer.planetgenerator
 import org.scalajs.dom
 import org.scalajs.dom._
 import org.scalajs.dom.html.Canvas
-
-import scala.scalajs.js
-import scala.scalajs.js.JSApp
 import Util._
-import com.shafer.planetgenerator.Generator.{appendButton, fillCanvas}
+import com.shafer.planetgenerator.Generator.{fillCanvas}
 import com.shafer.planetgenerator.delaunay.Point
-import org.w3c.dom.html.HTMLDivElement
+
+import scala.scalajs.js.annotation.JSExport
 
 case class Scene(
   screenWidth: Double,
@@ -50,7 +48,7 @@ object Scene {
   }
 }
 
-object Generator extends JSApp {
+object Generator {
 
   def fillCanvas(rctx: CanvasRenderingContext2D, width: Double, height: Double, color: Color) = {
     canvasOp(rctx){ ctx =>
@@ -59,7 +57,8 @@ object Generator extends JSApp {
     }
   }
 
-  def main(): Unit = {
+  @JSExport
+  def main(args: Array[String]): Unit = {
     val canvas: Canvas = document.createElement("canvas").asInstanceOf[html.Canvas]
     document.getElementById("container").appendChild(canvas)
     val scale = 4.0
@@ -74,7 +73,7 @@ object Generator extends JSApp {
     val button = dom.document.createElement("button").asInstanceOf[html.Button]
     button.setAttribute("class", "reload-button")
     button.textContent = "reload"
-    button.onclick = { event: MouseEvent =>
+    button.onclick = { (event: MouseEvent) =>
       val newPlanet = PlanetClasses.random.generatePlanet(Point(scene.scaledWidth / 2.0, scene.scaledHeight / 2.0))
       scene.copy(planet = newPlanet).render(rctx)
     }

@@ -5,12 +5,12 @@ import org.scalajs.dom._
 import Util._
 
 trait PlanetBaseFill {
-  def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D)
+  def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D): Unit
 }
 
 case class PlanetBaseGradient(x0: Double, y0: Double, x1: Double, y1: Double, colorOne: Color, colorTwo: Color) extends PlanetBaseFill {
 
-  def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D) = {
+  def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D): Unit = {
     canvasOp(ctx) { canvas =>
       val gradient = canvas.createLinearGradient(x0 = x0, y0 = y0, x1 = x1, y1 = y1)
       gradient.addColorStop(0.0, colorOne.build)
@@ -37,7 +37,7 @@ object PlanetBaseGradient {
 
 case class PlanetBaseTextured(craters: Seq[Crater], texture: Triangles, color: Color) extends PlanetBaseFill  {
 
-  def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D) = {
+  def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D): Unit = {
     canvasOp(ctx) { canvas =>
       println("Rendering base")
       canvas.beginPath()
@@ -113,7 +113,7 @@ case class PlanetBase(fill: PlanetBaseFill) extends RenderedFeature {
 
 case class Crater(xpos: Double, ypos: Double, points: Seq[Point]){
 
-  def render( color: Color)(canvas: CanvasRenderingContext2D) = {
+  def render( color: Color)(canvas: CanvasRenderingContext2D): Unit = {
     if(points.length > 2){
       val tricolor = color.darken(.30).build
       canvas.lineWidth = 0

@@ -82,7 +82,7 @@ object Util{
     res
   }
 
-  def canvasOp(canvas: CanvasRenderingContext2D)(operation: (CanvasRenderingContext2D) => Unit) = {
+  def canvasOp(canvas: CanvasRenderingContext2D)(operation: (CanvasRenderingContext2D) => Unit): Unit = {
     canvas.save()
     operation(canvas)
     canvas.restore()
