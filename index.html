@@ -169,6 +169,22 @@
             margin-top: 10px;
             margin-bottom: 5px;
             font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        #downloader-log{
+            background-color: #3b3b3b;
+            font-size: 12px;
+            display: flex;
+
+            flex-direction: column;
+            padding: 10px;
+            margin: 10px 0;
+            height: 100px;
+            overflow-y: auto;
+            border: 1px solid #141414;
+            font-family: Arial, sans-serif;
+
         }
     </style>
 
@@ -183,18 +199,18 @@
                 <input type="number" step="1" id="countOfPlanets" min="1" value="10">
                 <label for="ratioX">X Size</label>
                 <input type="number" step="1" id="ratioX" min="1" value="1600">
-                <label for="ratioY" >Y Size</label>
-                <input type="number" step="1" id="ratioY" min="1" value="900">
+                <label for="ratioY" >Y Size (base 1250)</label>
+                <input type="number" step="1" id="ratioY" min="1" value="1250">
                 <label for="pixelDensity">Pixel Density Multiplier</label>
                 <input type="number" step="0.1" id="pixelDensity" value="4.0" min="0.0">
-                <input type="submit" value="complete">
+                <input type="submit" value="generate">
             </form>
         </div>
     </div>
 
     <div id="title">Planet Generator</div>
     <div class="button-menu">
-        <button id="downloader-button" class="gen-button">Downloader</button>
+        <button id="downloader-button" class="gen-button">Bulk Generator</button>
         <button id="reload-button" class="gen-button">Reload</button>
     </div>
 

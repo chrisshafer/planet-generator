@@ -11,6 +11,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 import scala.util.{Failure, Random, Success}
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.scalajs.js.timers.SetIntervalHandle
 
 case class Scene(
   screenWidth: Double,
@@ -101,32 +102,82 @@ object Generator {
     canvas -> rctx
   }
   
+  def clearDownloaderLog() = {
+    
+    val log = dom.document.getElementById("downloader-log")
+    if(log != null){
+      log.parentNode.removeChild(log)
+    }
+  }
+  
+  private def appendMessageToLog(message: String, log: html.Div) = {
+    val newMessage = dom.document.createElement("span").asInstanceOf[html.Span]
+    newMessage.innerHTML = message
+    log.appendChild(newMessage)
+    log.scrollTop = log.clientHeight
+  }
+  
+  def appendToLog(message: String) = {
+    val maybeLog = dom.document.getElementById("downloader-log").asInstanceOf[html.Div]
+
+    val definitelyLog = if(maybeLog == null){
+      val parent = dom.document.getElementById("downloader-modal")
+      val log = dom.document.createElement("div").asInstanceOf[html.Div]
+      log.setAttribute("id", "downloader-log")
+      parent.appendChild(log)
+      log
+    } else maybeLog
+    println(message)
+    appendMessageToLog(message, definitelyLog)
+  }
+  
+  private var registeredDownloadTimer: SetIntervalHandle = null
+  
   def bulkDownload(countOfPlanets: Int, ratioX: Int, ratioY: Int, pixelDensity: Double): Unit = {
     import scala.scalajs.js.JSConverters._
-    
+    clearDownloaderLog()
+    appendToLog(s"Generating ${countOfPlanets} planets")
     val zipper = new JSZip()
+    
+    var count = 0
     (1 to countOfPlanets).foreach(idx =>
-      val planet = generateToEphemeral(ratioX, ratioY, pixelDensity)
-      zipper.file(s"${idx}.png", planet._1.toDataURL("image/png").replace("data:image/png;base64,", ""), js.Dictionary("base64" -> true))
-      println(s"generated ${idx}")
+      js.timers.setTimeout(100){
+        val planet = generateToEphemeral(ratioX, ratioY, pixelDensity)
+        zipper.file(s"${idx}.png", planet._1.toDataURL("image/png").replace("data:image/png;base64,", ""), js.Dictionary("base64" -> true))
+        appendToLog(s"generated planet ${idx}")
+        count += 1
+      }
     )
     
-    println("Generating file")
-    val asyncZipResult = zipper.generateAsync(js.Dictionary("type" -> "base64")).toFuture
-    asyncZipResult.onComplete {
-      case Failure(exception) => exception.printStackTrace()
-      case Success(value) => print("Successfully generated zip file")
-    }  
-    
-    asyncZipResult.foreach{ content =>
-      
-      var link = document.createElement("a").asInstanceOf[html.Anchor]
-      link.setAttribute("download", "planets.zip")
-      link.href = "data:application/zip;base64,"+content
-      
-      println("Initializing download")
-      link.click()
+    def tryRunDownload: Unit = {
+      if(count == countOfPlanets){
+        appendToLog("Generating zip file")
+        val asyncZipResult = zipper.generateAsync(js.Dictionary("type" -> "base64")).toFuture
+        asyncZipResult.onComplete {
+          case Failure(exception) =>
+            exception.printStackTrace()
+            appendToLog("Sorry! There has been an error generating the zip file :(")
+          case Success(value)     => 
+        }
+
+        asyncZipResult.foreach{ content =>
+
+          var link = document.createElement("a").asInstanceOf[html.Anchor]
+          link.setAttribute("download", "planets.zip")
+          link.href = "data:application/zip;base64,"+content
+
+          appendToLog("Successfully generated zip file")
+          appendToLog("Triggering download \uD83E\uDD73")
+          link.click()
+        }
+        if(registeredDownloadTimer != null){
+          js.timers.clearInterval(registeredDownloadTimer)
+        }
+      }
     }
+    
+    // poll for doneness
+    registeredDownloadTimer = js.timers.setInterval(200)(tryRunDownload)
   }
   
   def hookDownload(): Unit = {
