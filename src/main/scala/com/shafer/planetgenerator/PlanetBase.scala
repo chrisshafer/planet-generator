@@ -8,12 +8,20 @@ trait PlanetBaseFill {
   def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D): Unit
 }
 
-case class PlanetBaseGradient(x0: Double, y0: Double, x1: Double, y1: Double, colorOne: Color, colorTwo: Color) extends PlanetBaseFill {
+case class PlanetBaseGradient(
+  x0: Double, 
+  y0: Double, 
+  x1: Double, 
+  y1: Double, 
+  colorOne: Color, 
+  colorTwo: Color, 
+  startOffset: Double = 0.0
+) extends PlanetBaseFill {
 
   def render(x: Double, y: Double, radius: Double)(ctx: CanvasRenderingContext2D): Unit = {
     canvasOp(ctx) { canvas =>
       val gradient = canvas.createLinearGradient(x0 = x0, y0 = y0, x1 = x1, y1 = y1)
-      gradient.addColorStop(0.0, colorOne.build)
+      gradient.addColorStop(startOffset, colorOne.build)
       gradient.addColorStop(1.0, colorTwo.build)
 
       canvas.beginPath()
@@ -26,12 +34,12 @@ case class PlanetBaseGradient(x0: Double, y0: Double, x1: Double, y1: Double, co
 }
 
 object PlanetBaseGradient {
-  def random(planetPosition: Point, radius: Double, colors: (Color, Color)) = {
+  def random(planetPosition: Point, radius: Double, colors: (Color, Color), startOffset: Double = 0.0) = {
     val x0 = planetPosition.x - radius + (radius * Math.random()) * 2
     val x1 = planetPosition.x - radius + (radius * Math.random()) * 2
     val y0 = planetPosition.y - radius - (radius * 0.1)
     val y1 = planetPosition.y + radius + (radius * 0.1)
-    apply(x0 = x0, y0 = y0, x1 = x1, y1 = y1, colors._1, colors._2)
+    apply(x0 = x0, y0 = y0, x1 = x1, y1 = y1, colors._1, colors._2, startOffset)
   }
 }
 

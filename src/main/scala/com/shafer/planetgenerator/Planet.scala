@@ -22,8 +22,20 @@ case class Planet(
     timer( () => planetBase.render(this)(ctx) )("planetBase")
     timer( () => atmosphere.render(this)(ctx) )("atmosphere")
     ctx.restore()
+    renderSunShadow(ctx)
     renderAliasOverlayFix(ctx)
     renderName(ctx)
+  }
+  
+  def renderSunShadow(ctx: CanvasRenderingContext2D): Unit = {
+    // Use the gradient base to overlay a shadow
+    val intensity = Math.random() * 0.4 + 0.55
+    val coverage  = Math.random() * 0.10 + 0.03
+    val shadow = PlanetBaseGradient.random(position, radius, 
+      colors = (Color(0, 0, 0, 0.0), Color(0, 0, 0, intensity)),
+      startOffset = coverage
+    )
+    shadow.render(position.x, position.y, radius)(ctx)
   }
 
   def renderAliasOverlayFix(ctx: CanvasRenderingContext2D) = {
