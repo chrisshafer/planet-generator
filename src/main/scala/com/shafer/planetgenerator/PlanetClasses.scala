@@ -1,21 +1,36 @@
 package com.shafer.planetgenerator
 
+import com.shafer.planetgenerator.IrradiatedPlanet.radiusWeightedGaussianInt
 import com.shafer.planetgenerator.delaunay.Point
 
+import scala.util.Random
+
 trait GenerativePlanet {
+  val baseRadius: Double
+  val radiusVariance: Double
+  
+  def randomRadius = Math.random() * radiusVariance + baseRadius
   def generatePlanet(position: Point): Planet
+  
+  def radiusWeightedGaussianInt(mean: Double, stdev: Double, radius: Double): Int = {
+    (Util.gaussianRandom(mean, stdev) * (radius / baseRadius)).round.toInt
+  }
 }
 
 object BarrenPlanet extends GenerativePlanet {
+  
+  val baseRadius    : Double = 150
+  val radiusVariance: Double = 250
+
   def generatePlanet(position: Point) = {
-    val radius = Math.random() * 150 + 100
+    val radius = randomRadius
 
     Planet(
       planetBase = PlanetBase(
         PlanetBaseTextured.random(position, radius,
           Color.randomGreyscale(150, 200),
-          roughness = (Math.random() * 250).toInt + 100,
-          numberOfCraters = (Math.random * 10 + 7).toInt)
+          roughness = radiusWeightedGaussianInt(150, 75, radius),
+          numberOfCraters = radiusWeightedGaussianInt(10, 7, radius))
       ),
       atmosphere = Atmosphere.none
     )(position, radius)
@@ -23,8 +38,12 @@ object BarrenPlanet extends GenerativePlanet {
 }
 
 object IrradiatedPlanet extends GenerativePlanet {
+  
+  val baseRadius    : Double = 150
+  val radiusVariance: Double = 100
+
   def generatePlanet(position: Point) = {
-    val radius = Math.random() * 150 + 100
+    val radius = randomRadius
 
     val planetColor = Color.random
     Planet(
@@ -33,7 +52,7 @@ object IrradiatedPlanet extends GenerativePlanet {
       ),
       atmosphere = Atmosphere.random(
         position, radius,
-        cloudsNumber = 25,
+        cloudsNumber = radiusWeightedGaussianInt(5, 5, radius),
         cloudColor = () => {
           planetColor.inverted.copy(a = 0.5)
         })
@@ -42,30 +61,43 @@ object IrradiatedPlanet extends GenerativePlanet {
 }
 
 object GasPlanet extends GenerativePlanet {
+  
+  val baseRadius    : Double = 300
+  val radiusVariance: Double = 100
+
   def generatePlanet(position: Point) = {
-    val radius = Math.random() * 150 + 100
+    val radius = randomRadius
     val planetColor = Color.random
     Planet(
       planetBase = PlanetBase(
         PlanetBaseGradient.random(position, radius, (planetColor, Color.random))
       ),
-      atmosphere = Atmosphere.random(position, radius, cloudsNumber = 5, cloudColor = () => Color.white.copy(a = 0.3))
+      atmosphere = Atmosphere.random(
+        position, 
+        radius, 
+        cloudsNumber = radiusWeightedGaussianInt(5, 5, radius), 
+        cloudColor = () => Color.white.copy(a = 0.3)
+      )
     )(position, radius)
   }
 }
 
 object FracturedPlanet extends GenerativePlanet {
+
+  val baseRadius    : Double = 200
+  val radiusVariance: Double = 150
+
   def generatePlanet(position: Point) = {
-    val radius = Math.random() * 150 + 100
+    val radius = randomRadius
     Planet(
       planetBase = PlanetBase(
         PlanetBaseTextured.random(position, radius = radius,
           Color.random,
-          roughness = (Math.random() * 100).toInt + 60,
+          roughness = radiusWeightedGaussianInt(125, 25, radius),
           numberOfCraters = -1
         )
       ),
-      atmosphere = Atmosphere.random(position, radius, 5, () => Color.white)
+      atmosphere = Atmosphere.random(position, radius, radiusWeightedGaussianInt(7, 2, radius), () => Color.white)
     )(position, radius)
   }
 }

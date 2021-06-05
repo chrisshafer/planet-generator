@@ -53,7 +53,9 @@ object NameGenerator{
     "VIII",
     "IX",
     "X",
-    "XI"
+    "XI", 
+    "XII",
+    "XIII"
   )
 
   def generate: String = {

@@ -4,13 +4,16 @@ import com.shafer.planetgenerator.delaunay.Point
 import org.scalajs.dom.raw.CanvasRenderingContext2D
 import Util._
 
+
 case class Star(topLeft: Point, bound: Seq[Point], rotation: Double)
 object Star{
+  
   def atPoint(point: Point): Star = {
+    val size = Util.gaussianRandom(3.0, 1.0)
     val path = Seq(
-      Point(5 + Math.random() * 3, 0.0),
-      Point(5 + Math.random() * 3, 5 + Math.random()*3),
-      Point(0.0, 5 + Math.random()*3),
+      Point(size + Math.random() * 3, 0.0),
+      Point(size + Math.random() * 3, size + Math.random() * 3),
+      Point(0.0, size + Math.random()*3),
       Point(0, 0) // close
     )
     Star(point, path, Math.random() * 2.0 * Math.PI)

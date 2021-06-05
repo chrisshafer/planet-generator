@@ -4,10 +4,11 @@ import org.scalajs.dom
 import org.scalajs.dom._
 import org.scalajs.dom.html.Canvas
 import Util._
-import com.shafer.planetgenerator.Generator.{fillCanvas}
+import com.shafer.planetgenerator.Generator.fillCanvas
 import com.shafer.planetgenerator.delaunay.Point
 
 import scala.scalajs.js.annotation.JSExport
+import scala.util.Random
 
 case class Scene(
   screenWidth: Double,
@@ -33,6 +34,8 @@ case class Scene(
       }("renderCycle")
     }
   }
+  
+  def regenerate = Scene.random(screenWidth, screenHeight, scale, backgroundColor)
 }
 
 object Scene {
@@ -42,7 +45,7 @@ object Scene {
     val scaledHeight = screenHeight / scale
 
     val planet: Planet       = PlanetClasses.random.generatePlanet(Point(scaledWidth / 2.0, scaledHeight / 2.0))
-    val starfield: Starfield = Starfield.random(100, scaledWidth, scaledHeight, 300)
+    val starfield: Starfield = Starfield.random(Random.nextInt(100) + 100, scaledWidth, scaledHeight, planet.radius + 100)
 
     Scene(screenWidth, screenHeight, scale, planet, starfield, backgroundColor)
   }
@@ -74,8 +77,7 @@ object Generator {
     button.setAttribute("class", "reload-button")
     button.textContent = "reload"
     button.onclick = { (event: MouseEvent) =>
-      val newPlanet = PlanetClasses.random.generatePlanet(Point(scene.scaledWidth / 2.0, scene.scaledHeight / 2.0))
-      scene.copy(planet = newPlanet).render(rctx)
+      scene.regenerate.render(rctx)
     }
     dom.document.body.appendChild(button)
   }

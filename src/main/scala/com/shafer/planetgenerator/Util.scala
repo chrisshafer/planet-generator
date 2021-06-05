@@ -3,6 +3,7 @@ package com.shafer.planetgenerator
 import org.scalajs.dom._
 
 import scala.scalajs.js.Date
+import scala.util.Random
 
 case class Color(r: Int, g: Int, b: Int, a: Double){
   override def toString: String = s"rgba($r, $g, $b, $a)"
@@ -80,6 +81,15 @@ object Util{
     val res = fn()
     println(s"$name took ${Date.now() - time}ms")
     res
+  }
+
+  // pulled from small-worlds - make a common lib for randoms that cross compiles
+  val rng = new Random()
+  def gaussianRandom(mean: Double, stdv: Double): Double = {
+    val r1 = rng.nextDouble()
+    val r2 = rng.nextDouble()
+    val pred = Math.sqrt(-2 * Math.log(r1)) * Math.sin(2 * Math.PI * r2)
+    mean + (stdv * pred)
   }
 
   def canvasOp(canvas: CanvasRenderingContext2D)(operation: (CanvasRenderingContext2D) => Unit): Unit = {
