@@ -1122,10 +1122,10 @@ $c_Lcom_shafer_planetgenerator_Generator$.prototype.bulkDownload__I__I__I__D__V 
       var arg1 = i;
       $m_sjs_js_timers_package$().setTimeout__D__F0__sjs_js_timers_SetTimeoutHandle(100.0, new $c_sjsr_AnonFunction0(((this$8, ratioX$1$2, ratioY$1$2, pixelDensity$1$2, zipper$1$2, count$1$2, idx$2) => (() => {
         var planet = this$8.generateToEphemeral__I__I__D__T2(ratioX$1$2, ratioY$1$2, pixelDensity$1$2);
-        var this$9 = $as_T(planet.T2__f__1.toDataURL("image/png"));
-        var $$x1 = $as_T(this$9.split("data:image/png;base64,").join(""));
+        var this$9 = $as_T(planet.T2__f__1.toDataURL("image/jpeg"));
+        var $$x1 = $as_T(this$9.split("data:image/jpeg;base64,").join(""));
         var properties = $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_T2.getArrayOf().constr)([new $c_T2("base64", true)]));
-        zipper$1$2.file((idx$2 + ".png"), $$x1, $m_sjs_js_special_package$().objectLiteral__sci_Seq__sjs_js_Object(properties));
+        zipper$1$2.file((idx$2 + ".jpeg"), $$x1, $m_sjs_js_special_package$().objectLiteral__sci_Seq__sjs_js_Object(properties));
         this$8.appendToLog__T__V(("generated planet " + idx$2));
         var ev$5 = ((1 + count$1$2.sr_IntRef__f_elem) | 0);
         count$1$2.sr_IntRef__f_elem = ev$5

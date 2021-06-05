@@ -143,7 +143,7 @@ object Generator {
     (1 to countOfPlanets).foreach(idx =>
       js.timers.setTimeout(100){
         val planet = generateToEphemeral(ratioX, ratioY, pixelDensity)
-        zipper.file(s"${idx}.png", planet._1.toDataURL("image/png").replace("data:image/png;base64,", ""), js.Dictionary("base64" -> true))
+        zipper.file(s"${idx}.jpeg", planet._1.toDataURL("image/jpeg").replace("data:image/jpeg;base64,", ""), js.Dictionary("base64" -> true))
         appendToLog(s"generated planet ${idx}")
         count += 1
       }
