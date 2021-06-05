@@ -48,16 +48,15 @@
         #container{
             position: fixed;
             top: 0px; right: 0px; bottom: 0px; left: 0px;
+            z-index: 2;
         }
 
         canvas{
             background-color: #141414;
         }
 
-        .reload-button{
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
+
+        .gen-button{
             padding: 6px 10px 6px 10px;
             font-family: 'Orbitron', sans-serif;
 
@@ -68,14 +67,15 @@
             border: 3px solid rgb(200, 200, 200);
             border-radius: 4px;
             color: rgb(200, 200, 200);
-
+            margin: 0px 5px;
             outline: none;
             cursor: pointer;
 
             transition: border-color 0.2s, color 0.2s;
         }
 
-        .reload-button:active{
+
+        #reload-button:active{
             border-color: white;
             color: white;
         }
@@ -85,14 +85,120 @@
             left: 20px;
             top: 20px;
             color: rgb(200, 200, 200);
+            z-index: 999;
+        }
 
+        .modal-wrapper{
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 10;
+            top: 0; right: 0; bottom: 0; left: 0;
+        }
+
+        #downloader-modal {
+            display: flex;
+            flex-direction: column;
+            pointer-events: all;
+            z-index: 21;
+            min-width: 250px;
+            background-color: #585858;
+            border-radius: 4px;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.14), 3px 3px 10px rgba(0, 0, 0, 0.07);
+            padding: 10px;
+            color: white;
+        }
+
+        #downloader-modal.hide{
+            display: none;
+        }
+
+        #downloader-modal.show{
+            display: flex;
+        }
+
+        .button-menu{
+            z-index: 20;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-items: flex-end;
+        }
+
+        #downloader-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .downloader-title{
+            align-self: center;
+            font-weight: bold;
+        }
+
+        #downloader-form input {
+            background-color: #3b3b3b;
+            border: 1px solid #141414;
+            color: white;
+            outline: none;
+            font-size: 16px;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        #downloader-form input[type="submit"]{
+            margin-top: 10px;
+            font-weight: normal;
+            font-family: 'Orbitron', sans-serif;
+            padding: 10px;
+            font-size: 14px;
+
+            transition: background-color 0.2s;
+        }
+
+        #downloader-form input[type="submit"]:hover{
+            background-color: #3f51b5;
+            cursor: pointer;
+        }
+
+        #downloader-form label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 14px;
         }
     </style>
 
 </head>
 <body>
     <div id="container"></div>
-    <script type="text/javascript" src="target/scala-3.0.0/planet-generator-fastopt.js"></script>
+    <div class="modal-wrapper">
+        <div id="downloader-modal" class="hide">
+            <span class="downloader-title">Bulk Download</span>
+            <form id="downloader-form">
+                <label for="countOfPlanets">Number of Planets</label>
+                <input type="number" step="1" id="countOfPlanets" min="1" value="10">
+                <label for="ratioX">X Size</label>
+                <input type="number" step="1" id="ratioX" min="1" value="1600">
+                <label for="ratioY" >Y Size</label>
+                <input type="number" step="1" id="ratioY" min="1" value="900">
+                <label for="pixelDensity">Pixel Density Multiplier</label>
+                <input type="number" step="0.1" id="pixelDensity" value="4.0" min="0.0">
+                <input type="submit" value="complete">
+            </form>
+        </div>
+    </div>
+
     <div id="title">Planet Generator</div>
+    <div class="button-menu">
+        <button id="downloader-button" class="gen-button">Downloader</button>
+        <button id="reload-button" class="gen-button">Reload</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="target/scala-3.0.0/planet-generator-fastopt.js"></script>
 </body>
 </html>
